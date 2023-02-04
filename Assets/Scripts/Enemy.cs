@@ -4,44 +4,45 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Transform target;
+    [SerializeField] private float speed;
     private int health;
     [SerializeField] private int maxHealth;
     [SerializeField] private int range;
     [SerializeField] private int damage;
+    [SerializeField] private float attackRate; // Attack rate in seconds
+    private float attackTimer;
+
     void Start()
     {
-        
+        attackTimer = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void takeDmg(int dmgAmount)
-    {
-        health -= dmgAmount;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        attackTimer -= Time.deltaTime;
 
-        Debug.Log(health);
+        if (Vector3.Distance(transform.position, target.position) <= range)
+        {
+            if (attackTimer <= 0f)
+            {
+                Attack();
+                attackTimer = attackRate;
+            }
+        }
+        else
+        {
+            Move();
+        }
     }
+
     private void Attack()
     {
         Debug.Log("Attacking");
     }
+
     private void Move()
     {
-        Debug.Log("Moving");
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Attackable"))
-        {
-            Debug.Log("unit in range");
-        }
+        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 }
