@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     
     public Unit unit; //the unit that occupies this tile
     public bool canGoUp; //if the tile can go up when hovered over
-    public bool filled { get { return unit == null; } } //checks if the tile has a unit on it
+    public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
     private void Update()
     {
         if(canGoUp)
