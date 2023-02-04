@@ -26,11 +26,6 @@ public class GameManager : MonoBehaviour
         {
             if (hit.transform.tag == "Tile")
             {
-                //if (hit.Equals(currentHit))
-                //{
-                //    currentHit.transform.GetComponent<Tile>().goDown();
-                //    hit.transform.GetComponent<Tile>().goUp();
-                //}
                 currentHit = hit.transform.GetComponent<Tile>();
             }            
         }
