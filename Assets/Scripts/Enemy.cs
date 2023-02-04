@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] public GameObject Projectile;
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
     private int health;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) <= range)
         {
+            Debug.Log("Enemy in range");
             if (attackTimer <= 0f)
             {
                 Attack();
@@ -39,6 +41,11 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Attacking");
+        //instansiate projectile
+        Instantiate(Projectile, transform.position, Quaternion.identity);
+        
+
+
     }
 
     private void Move()
