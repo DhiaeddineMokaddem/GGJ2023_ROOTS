@@ -6,21 +6,16 @@ using UnityEngine;
 
 public class RessourceUnit : Unit
 {
-    // Start is called before the first frame update
-    
-    
+    [SerializeField] float resourceGenerateRate; //per second
     void Start()
     {
         InvokeRepeating("Generate", 1f, 1f);
         InvokeRepeating("Regen", 1f, 1f);
         health = maxHealth;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-        
+        Generate(resourceGenerateRate*Time.deltaTime);
     }
     private void Regen()
     {
@@ -30,9 +25,9 @@ public class RessourceUnit : Unit
             health += regenRate;
         }
     }
-    private void Generate()
+    private void Generate(float addRate)
     {
-        Debug.Log("Generating ressources");
+        GameManager.instance.waterResource += addRate;
     }
     private void takeDmg(int dmgAmount)
     {

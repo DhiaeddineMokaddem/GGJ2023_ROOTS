@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public Tile currentHit;
+    public float waterResource;
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -16,7 +19,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public Tile currentHit;
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

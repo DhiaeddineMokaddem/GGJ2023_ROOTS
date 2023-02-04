@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
             {
                 StartCoroutine(goUp()); //goes up if so
             }
-            else// if (transform.position.y != 0) //checks if itself is not the tile that is being hovered over            
+            else if (transform.position.y != 0) //checks if itself is not the tile that is being hovered over            
             {
                 StartCoroutine(goDown()); //stays down or goes back down (unoptemized)
             }
