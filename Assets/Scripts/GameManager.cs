@@ -30,7 +30,11 @@ public class GameManager : MonoBehaviour
                 //    hit.transform.GetComponent<Tile>().goUp();
                 //}
                 currentHit = hit.transform.GetComponent<Tile>();
-            }
+            }            
+        }
+        else
+        {
+            currentHit = null;
         }
     }
 }
