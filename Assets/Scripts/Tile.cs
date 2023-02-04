@@ -23,10 +23,16 @@ public class Tile : MonoBehaviour
     }
     [SerializeField] float Speed = 0.5f;
     [SerializeField] float Distance = 0.5f;
-    
-    public IEnumerator goUp() //moves tiles up by distance
+    public void spawnUnit(Unit unitToSpawn)
     {
-        
+        if (!filled)
+        {
+            unit = unitToSpawn;
+            Instantiate(unit, transform);
+        }
+    }
+    public IEnumerator goUp() //moves tiles up by distance
+    {    
         StopCoroutine("goUp");
         while (transform.position.y < Distance)
         {
