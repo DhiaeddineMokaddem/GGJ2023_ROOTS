@@ -7,4 +7,6 @@ public class Unit : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] float maxHealth;
     [SerializeField] float Range;
+    [SerializeField] float damage;
+    [SerializeField] bool isMother;
 }

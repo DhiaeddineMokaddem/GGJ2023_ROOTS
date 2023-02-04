@@ -9,16 +9,15 @@ public class Tile : MonoBehaviour
     public bool filled { get { return unit == null; } } //checks if the tile has a unit on it
     private void Update()
     {
-        Debug.Log(GameManager.instance.currentHit);
         if(canGoUp)
         {
             if (this == GameManager.instance.currentHit) //checks if itself is the tile that is being hovered over
             {
                 StartCoroutine(goUp()); //goes up if so
             }
-            else
+            else if (transform.position.y != 0) //checks if itself is not the tile that is being hovered over            
             {
-                StartCoroutine(goDown()); //stays down or goes back down (unoptemized)
+                goDown(); //stays down or goes back down (unoptemized)
             }
         }
     }
@@ -30,16 +29,9 @@ public class Tile : MonoBehaviour
             transform.position = new Vector3(transform.position.x,transform.position.y + 0.5f*Time.deltaTime, transform.position.z);
             yield return new WaitForEndOfFrame();
         }
-        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
     }
-    public IEnumerator goDown() //inprogress
+    public void goDown() //inprogress
     {
-        StopCoroutine("goDown");
-        while (transform.position.y > 0)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f * Time.deltaTime, transform.position.z);
-            yield return new WaitForEndOfFrame();
-        }
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 }
