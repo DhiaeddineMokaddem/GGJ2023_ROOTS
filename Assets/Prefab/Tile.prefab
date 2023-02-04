@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa754815f610a194597121405642dbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDown: 0
   unit: {fileID: 0}
   canGoUp: 1
-  Speed: 0.5
+  Speed: 5
   Distance: 0.2
