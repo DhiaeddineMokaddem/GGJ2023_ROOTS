@@ -111,3 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
+  canGoUp: 1
+  Speed: 0.5
+  Distance: 0.2
