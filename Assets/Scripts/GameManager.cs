@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public Tile currentHit;
     public float waterResource;
+    public ChoosingCanvas chooseCanvas;
+    public bool isChoosing;
     private void Awake()
     {
         if (instance == null)
@@ -21,17 +23,38 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 10000))
+        if (!isChoosing)
         {
-            if (hit.transform.tag == "Tile")
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 10000) && !Input.GetMouseButtonDown(1))
             {
-                currentHit = hit.transform.GetComponent<Tile>();
-            }            
+                if (hit.transform.tag == "Tile")
+                {
+                    currentHit = hit.transform.GetComponent<Tile>();
+                }
+            }
+            else
+            {
+                currentHit = null;
+            }
         }
-        else
+        if(currentHit != null)
         {
-            currentHit = null;
+            if (Input.GetMouseButtonDown(0))
+            {
+                chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 10, currentHit.transform.position.z);
+                isChoosing = true;
+            }
         }
+    }
+    public void SpawnTurret(Unit theUnit)
+    {
+        currentHit.spawnUnit(theUnit);
+        removeFocus();
+    }
+    public void removeFocus()
+    {
+        chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 1000, currentHit.transform.position.z);
+        isChoosing = false;
     }
 }
