@@ -13,8 +13,6 @@ public class RessourceUnit : Unit
     {
         InvokeRepeating("Generate", 1f, 1f);
         InvokeRepeating("Regen", 1f, 1f);
-        regenRate = 1;
-        maxHealth = 25;
         health = maxHealth;
     }
 
