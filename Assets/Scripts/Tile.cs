@@ -15,23 +15,34 @@ public class Tile : MonoBehaviour
             {
                 StartCoroutine(goUp()); //goes up if so
             }
-            else if (transform.position.y != 0) //checks if itself is not the tile that is being hovered over            
+            else// if (transform.position.y != 0) //checks if itself is not the tile that is being hovered over            
             {
-                goDown(); //stays down or goes back down (unoptemized)
+                StartCoroutine(goDown()); //stays down or goes back down (unoptemized)
             }
         }
     }
-    public IEnumerator goUp() //inprogress
+    [SerializeField] float Speed = 0.5f;
+    [SerializeField] float Distance = 0.5f;
+    
+    public IEnumerator goUp() //moves tiles up by distance
     {
+        
         StopCoroutine("goUp");
-        while (transform.position.y < 0.5)
+        while (transform.position.y < Distance)
         {
-            transform.position = new Vector3(transform.position.x,transform.position.y + 0.5f*Time.deltaTime, transform.position.z);
+            transform.position = new Vector3(transform.position.x,transform.position.y + Speed * Time.deltaTime, transform.position.z);
             yield return new WaitForEndOfFrame();
         }
+        transform.position = new Vector3(transform.position.x, Distance, transform.position.z);
     }
-    public void goDown() //inprogress
+    public IEnumerator goDown() //moves tiles to initial state
     {
+        StopCoroutine("goDown");
+        while (transform.position.y > 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - Speed * Time.deltaTime, transform.position.z);
+            yield return new WaitForEndOfFrame();
+        }
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 }
