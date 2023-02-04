@@ -34,4 +34,15 @@ public class AttackUnit : Unit
     {
         Debug.Log(" Unit Attacking enemy");
     }
+    void regen()
+    {
+        if (health < maxHealth)
+        {
+            health += regenRate;
+        }
+    }
+    void takeDamage(int damage)
+    {
+        health -= damage;
+    }
 }
