@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     public Tile currentHit;
     void Update()
     {
@@ -12,11 +24,11 @@ public class GameManager : MonoBehaviour
         {
             if (hit.transform.tag == "Tile")
             {
-                if (hit.Equals(currentHit))
-                {
-                    currentHit.transform.GetComponent<Tile>().goDown();
-                    hit.transform.GetComponent<Tile>().goUp();
-                }
+                //if (hit.Equals(currentHit))
+                //{
+                //    currentHit.transform.GetComponent<Tile>().goDown();
+                //    hit.transform.GetComponent<Tile>().goUp();
+                //}
                 currentHit = hit.transform.GetComponent<Tile>();
             }
         }

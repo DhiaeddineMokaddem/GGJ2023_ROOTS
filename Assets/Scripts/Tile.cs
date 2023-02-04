@@ -8,7 +8,14 @@ public class Tile : MonoBehaviour
     public bool filled { get { return unit == null; } }
     private void Update()
     {
-        
+        if(this == GameManager.instance.currentHit)
+        {
+            goUp();
+        }
+        else
+        {
+            goDown();
+        }
     }
     public void goUp()
     {
