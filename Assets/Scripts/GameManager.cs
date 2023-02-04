@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
         }
         if(currentHit != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
-                chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 10, currentHit.transform.position.z);
+                chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
                 isChoosing = true;
             }
         }
