@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] public GameObject Projectile;
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
     private int health;
@@ -39,6 +40,10 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Attacking");
+        //instansiate bullet going in the direction of the target
+        Instantiate(Projectile, transform.position, Quaternion.identity);
+
+
     }
 
     private void Move()
