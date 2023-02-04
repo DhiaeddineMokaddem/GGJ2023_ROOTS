@@ -23,7 +23,7 @@ public class CamerController : MonoBehaviour
             //transform.RotateAround(Vector3.zero, Vector3.right, Input.GetAxis("Mouse Y") * 10f);
         }
         //get mouse roller and zoom in and out
-        if (Camera.main.orthographicSize >= 1)
+        if (Camera.main.orthographicSize >= 1 && Camera.main.orthographicSize <=10)
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
