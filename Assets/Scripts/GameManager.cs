@@ -69,7 +69,11 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnTurret(Unit theUnit)
     {
-        currentHit.spawnUnit(theUnit);
+        if(theUnit.placementCost < water)
+        {
+            currentHit.spawnUnit(theUnit);
+            water -= theUnit.placementCost;
+        }
         removeFocus();
     }
     public void removeFocus()

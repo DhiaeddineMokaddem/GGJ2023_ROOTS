@@ -5016,6 +5016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   regenRate: 1
+  placementCost: 0
 --- !u!54 &-6786636548428978578
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5056,7 +5057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3508121348320816938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.18, z: 0.52}
+  m_LocalPosition: {x: 0.43, y: 3.72, z: 0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
