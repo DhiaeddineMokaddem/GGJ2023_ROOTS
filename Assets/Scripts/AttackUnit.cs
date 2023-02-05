@@ -63,7 +63,7 @@ public class AttackUnit : Unit
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -78,7 +78,7 @@ public class AttackUnit : Unit
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            takeDamage(10);
+            takeDamage(1);
             Debug.Log("Unit took damage");
         }
     }

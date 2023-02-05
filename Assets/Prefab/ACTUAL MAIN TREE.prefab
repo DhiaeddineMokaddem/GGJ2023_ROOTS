@@ -5017,6 +5017,7 @@ MonoBehaviour:
   maxHealth: 1000
   regenRate: 1
   placementCost: 0
+  waterGenerateRate: 1
 --- !u!54 &-6786636548428978578
 Rigidbody:
   m_ObjectHideFlags: 0
