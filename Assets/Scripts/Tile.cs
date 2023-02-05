@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+enum tileTypes
+{
+    normal,
+    water,
+    waterBorder
+}
 public class Tile : MonoBehaviour
 {
     [SerializeField] bool isDown=true;
@@ -62,4 +67,5 @@ public class Tile : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         isDown = true;
     }
+
 }
