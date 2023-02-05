@@ -56,7 +56,7 @@ Material:
     - _QueueOffset: 0
     - _Water_Depth: 1.59
     m_Colors:
-    - _Color_1: {r: 1, g: 1, b: 1, a: 0}
+    - _Color_1: {r: 1, g: 1, b: 1, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 0}
     - _Tile_1: {r: 0.002, g: 0.003, b: 0, a: 0}
     - _Tile_2: {r: -0.005, g: -0.002, b: 0, a: 0}
