@@ -7,14 +7,16 @@ public class AttackUnit : Unit
 {
     // Start is called before the first frame update
     [SerializeField] private int range = 5;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private GameObject Projectile;
+    [SerializeField] public int damage = 10;
     [SerializeField] private float attackRate = 1f; // Attack rate in seconds
     private float attackTimer = 0f;
-    [SerializeField] private Transform target;
+    [SerializeField] public Transform target;
     void Start()
     {
         health = maxHealth;
-         if (!target)
+        InvokeRepeating("Regen", 1f, 1f);
+        if (!target)
         {
             target = GameObject.FindGameObjectWithTag("enemy").transform;
         }
@@ -23,9 +25,11 @@ public class AttackUnit : Unit
     // Update is called once per frame
     void Update()
     {
-       
-        attackTimer -= Time.deltaTime;
-        if (Vector3.Distance(transform.position, target.position) <= range)
+
+        if (target)
+        {
+            transform.LookAt(target);
+            if (Vector3.Distance(transform.position, target.position) <= range)
         {
             if (attackTimer <= 0f)
             {
@@ -33,12 +37,20 @@ public class AttackUnit : Unit
                 attackTimer = attackRate;
             }
         }
+        }
+        attackTimer -= Time.deltaTime;
+        
     }
     void Attack()
     {
+        if (target)
+        {
+            Instantiate(Projectile, transform.position, Quaternion.identity, transform);
         Debug.Log(" Unit Attacking enemy");
+        }
+        
     }
-    void regen()
+    void Regen()
     {
         if (health < maxHealth)
         {
@@ -48,6 +60,10 @@ public class AttackUnit : Unit
     void takeDamage(int damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -55,6 +71,14 @@ public class AttackUnit : Unit
         {
             target = other.transform;
         }
-
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            takeDamage(10);
+            Debug.Log("Unit took damage");
+        }
     }
 }

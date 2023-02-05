@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseUnit : Unit
+public class DefenderUnit : Unit
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame update    
+    private float hp;
     void Start()
     {
-        health = maxHealth;
+        hp = maxHealth;
         regenRate = 2f;
         InvokeRepeating("Regen", 1f, 1f);
     }

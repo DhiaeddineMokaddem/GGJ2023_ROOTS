@@ -7,17 +7,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject Projectile;
     public Transform target;
     [SerializeField] private float speed;
-    private int health;
-    [SerializeField] private int maxHealth;
+    private float health;
+    [SerializeField] private int maxHealth = 50;
     [SerializeField] private int range;
     public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;
+    //make array of transform named targets
+    
    
+
+
     void Start()
     {
         attackTimer = 0f;
-        
+        health = maxHealth;
     }
 
     void Update()
@@ -55,12 +59,13 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
+        transform.LookAt(target);
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
-    private void takeDamage()
+    private void takeDamage(float takenDmg)
     {
         {
-            health -= damage;
+            health -= takenDmg;
             if (health <= 0)
             {
                 Destroy(gameObject);
@@ -72,6 +77,10 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("attackable"))
         {
             target = other.transform;
+        }
+        if (other.CompareTag("BulletAlly"))
+        {
+            takeDamage(10);
         }
         
     }
