@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;
-    GameObject hitVFX;
+    
     //make array of transform named targets
 
 
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
             health -= takenDmg;
             if (health <= 0)
             {
-                Instantiate(hitVFX, transform.position, Quaternion.identity);
+            
                 Destroy(gameObject);
             }
         }
