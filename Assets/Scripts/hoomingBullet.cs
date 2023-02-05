@@ -2,19 +2,26 @@ using UnityEngine;
 
 public class hoomingBullet : MonoBehaviour
 {
-    public Transform target;  // The target to follow
+    private Transform target;  // The target to follow
     public float speed;  // The speed of the projectile
     public float rotationSpeed;  // The speed at which the projectile rotates towards the target
-
+    public float damage = 20;  // The damage the projectile deals on impact
+    
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //get script component from parent
+        //transform.parent.GetComponent<Enemy>();
+        // Get the target from the parent
+        target = transform.parent.GetComponent<Enemy>().target;
+
     }
 
     void Update()
-    {
+    {   
+        
         if (target == null)
         {
             // If the target is null, do nothing
@@ -24,9 +31,9 @@ public class hoomingBullet : MonoBehaviour
         // Calculate direction towards target
         Vector3 direction = (target.position - transform.position).normalized;
 
-        // Rotate towards target
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        //// Rotate towards target
+        //Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
 
         // Apply force in direction of target
         rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
