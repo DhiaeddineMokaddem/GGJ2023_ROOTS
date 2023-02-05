@@ -117,10 +117,10 @@ MonoBehaviour:
     type: 3}
   target: {fileID: 2588413749413348328, guid: 51e174d523734464687ad22fb0a0bbc7, type: 3}
   speed: 5
-  maxHealth: 50
+  maxHealth: 20
   range: 5
   damage: 10
-  attackRate: 1
+  attackRate: 2
 --- !u!54 &6468381014056419982
 Rigidbody:
   m_ObjectHideFlags: 0

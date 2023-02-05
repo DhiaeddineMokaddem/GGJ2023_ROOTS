@@ -45,9 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9e9c61bc23c534791253c49b0caef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  regenRate: 0
-  resourceGenerateRate: 0
+  maxHealth: 1
+  regenRate: 1
+  placementCost: 1
+  Recouceplant:
+  - 5
+  - 10
+  - 0.2
+  resourceGenerateRate: 1
 --- !u!1001 &4012202407669078178
 PrefabInstance:
   m_ObjectHideFlags: 0
