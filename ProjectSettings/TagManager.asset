@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Tile
   - attackable
+  - Bullet
+  - Undefined
+  - enemy
   layers:
   - Default
   - TransparentFX
