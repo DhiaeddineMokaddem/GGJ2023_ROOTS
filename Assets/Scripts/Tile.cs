@@ -51,8 +51,7 @@ public class Tile : MonoBehaviour
     {
         if (!filled && canBeBuiltOn)
         {
-            unit = unitToSpawn;
-            Instantiate(unit, transform);
+            unit = Instantiate(unitToSpawn, transform);
             rootLinks.SetActive(true);
             Ray ray = new Ray(transform.position, Vector3.right);
             int mask = 1 << LayerMask.NameToLayer("Tile");

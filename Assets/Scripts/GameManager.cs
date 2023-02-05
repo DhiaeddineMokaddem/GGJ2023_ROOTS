@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isChoosing;
     private void Awake()
     {
-        if (instance == null)
+        if (instance == null)//singleton class
         {
             instance = this;
         }
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (!isChoosing)
+        if (!isChoosing)//raycast on tile to move it up
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             int mask = 1 << LayerMask.NameToLayer("Tile");
@@ -39,12 +39,21 @@ public class GameManager : MonoBehaviour
                 currentHit = null;
             }
         }
-        if(currentHit != null)
+        if(currentHit != null)//if already tile moved up
         {
-            if (Input.GetMouseButton(0) && currentHit.canBeBuiltOn)
+            if (Input.GetMouseButton(0) && currentHit.canBeBuiltOn)//if clicked on tile and tile is empty show canvas to build new roots
             {
                 chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
                 isChoosing = true;
+            }
+            else//if clicked on tile and tile is not empty show canvas to upgrade roots
+            //if filled show upgrade + cancle canvas
+            {
+                if (Input.GetMouseButton(0) && !currentHit.canBeBuiltOn)
+                {
+                    chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
+                    isChoosing = true;
+                }
             }
         }
     }
@@ -58,4 +67,11 @@ public class GameManager : MonoBehaviour
         chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 1000, currentHit.transform.position.z);
         isChoosing = false;
     }
+
+    //public void UpgradeTurret()
+    //{
+    //    currentHit.upgradeUnit();
+    //    removeFocus();
+    //}
+    
 }

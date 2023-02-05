@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RessourceUnit : Unit
 {
-    [SerializeField] float resourceGenerateRate; //per second
+    [SerializeField] float resourceGenerateRate; //per second // resourceGenerateRate=unit.Recouceplant[2]
     void Start()
     {
         InvokeRepeating("Generate", 1f, 1f);
@@ -38,5 +38,6 @@ public class RessourceUnit : Unit
         }
 
         Debug.Log(health);
+        
     }
 }

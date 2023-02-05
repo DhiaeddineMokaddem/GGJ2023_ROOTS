@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
         {
             if (Timer <= 0)
             {
-                Instantiate(prefab, childTransforms[Random.Range(0,transform.childCount)].transform.position, Quaternion.identity);
+                Instantiate(prefab, childTransforms[Random.Range(0,transform.childCount)].transform.position, Quaternion.identity); // 
                 Timer = SpawnedRate;
             }
             else
