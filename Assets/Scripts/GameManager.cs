@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     public Tile currentHit;
-    public float waterResource;
+    public TextMeshProUGUI resourceText;
+    private float waterResource;
+    public float water
+    {
+        get { return waterResource; }
+        set
+        {
+            waterResource = value;
+            resourceText.text = "Water Resource : " + value.ToString("0") + "L";
+        }
+    }
     public ChoosingCanvas chooseCanvas;
     public bool isChoosing;
     private void Awake()
