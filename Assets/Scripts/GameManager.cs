@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     public Tile currentHit;
-    public float waterResource;
+    public TextMeshProUGUI resourceText;
+    private float waterResource;
+    public float water
+    {
+        get { return waterResource; }
+        set
+        {
+            waterResource = value;
+            resourceText.text = "Water Resource : " + value.ToString("0") + "L";
+        }
+    }
     public ChoosingCanvas chooseCanvas;
     public bool isChoosing;
     private void Awake()
@@ -59,7 +69,11 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnTurret(Unit theUnit)
     {
-        currentHit.spawnUnit(theUnit);
+        if(theUnit.placementCost < water)
+        {
+            currentHit.spawnUnit(theUnit);
+            water -= theUnit.placementCost;
+        }
         removeFocus();
     }
     public void removeFocus()
@@ -68,10 +82,31 @@ public class GameManager : MonoBehaviour
         isChoosing = false;
     }
 
-    //public void UpgradeTurret()
-    //{
-    //    currentHit.upgradeUnit();
-    //    removeFocus();
-    //}
-    
+    public void UpgradeTurret()
+    {
+        if (currentHit.unit is RessourceUnit)
+        {
+            RessourceUnit x = (RessourceUnit)currentHit.unit;
+            x.Recouceplant[0] += 2f;
+            x.Recouceplant[1] += 2f;
+            x.Recouceplant[3] += 0.2f;
+        }
+        if (currentHit.unit is AttackUnit)
+        {
+            AttackUnit x = (AttackUnit)currentHit.unit;
+            x.Attackplant[0] += 2f;
+            x.Attackplant[1] += 2f;
+            x.Attackplant[3] += 01f;
+        }
+        /*
+        if (currentHit.unit is DefenseUnit)
+        {
+            DefenseUnit x = (DefenseUnit)currentHit.unit;
+            x.Defenseplant[0] += 2f;
+            x.Defenseplant[1] += 3f;        
+        }
+        */
+        removeFocus();
+    }
+
 }
