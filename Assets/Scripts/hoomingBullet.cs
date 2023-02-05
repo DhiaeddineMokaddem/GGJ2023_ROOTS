@@ -6,7 +6,7 @@ public class hoomingBullet : MonoBehaviour
     public float speed;  // The speed of the projectile
     public float rotationSpeed;  // The speed at which the projectile rotates towards the target
     public float damage;  // The damage the projectile deals on impact
-    
+    public Transform hitVFX;
     private Rigidbody rb;
 
     void Start()
@@ -46,6 +46,7 @@ public class hoomingBullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Instantiate(hitVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
