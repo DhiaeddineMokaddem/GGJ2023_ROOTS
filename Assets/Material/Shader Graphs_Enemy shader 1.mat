@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1901997391372631951
+--- !u!114 &-8868072806073345248
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Enemy shader
+  m_Name: Shader Graphs_Enemy shader 1
   m_Shader: {fileID: -6465566751694194690, guid: 958babac9d1daaf46a7963ef844077e8,
     type: 3}
   m_ValidKeywords: []
@@ -52,12 +52,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Disolve: -0.2
+    - _Disolve: 0.33
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Disolve_color: {r: 1, g: 0, b: 0, a: 0}
-    - _Gradiant_1: {r: 0, g: 0, b: 0, a: 0}
-    - _Gradiant_2: {r: 6.498019, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 1, g: -0.3, b: 0, a: 0}
+    - _Disolve_color: {r: 1, g: 1, b: 1, a: 0}
+    - _Gradiant_1: {r: 1, g: 1, b: 1, a: 0}
+    - _Gradiant_2: {r: 1, g: 1, b: 1, a: 0}
+    - _Tiling: {r: -1.5, g: -0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
