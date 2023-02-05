@@ -14,7 +14,7 @@ public class Tile : MonoBehaviour
     public Unit unit; //the unit that occupies this tile
    
     public bool canGoUp; //if the tile can go up when hovered over
-    public bool canBeBuiltOn;
+    public bool canBeBuiltOn;//if the tile has other roots near it 
     public bool canBeMadeBuildable;
     [SerializeField] tileTypes myType;
     public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
@@ -41,7 +41,7 @@ public class Tile : MonoBehaviour
         if(myType == tileTypes.waterBorder && unit is RessourceUnit)
         {
             RessourceUnit x = (RessourceUnit)unit;
-            x.Generate(5*Time.deltaTime);
+            x.Generate(x.Recouceplant[2]*Time.deltaTime);
 
         }
     }

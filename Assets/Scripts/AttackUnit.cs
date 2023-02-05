@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class AttackUnit : Unit
 {
+    public float[] Attackplant = { 5f, 10f, 10f };// 0upgrade worth/1plant max health/2attack dmg
     // Start is called before the first frame update
     [SerializeField] private int range = 5;
     [SerializeField] private GameObject Projectile;
@@ -14,7 +15,7 @@ public class AttackUnit : Unit
     [SerializeField] public Transform target;
     void Start()
     {
-        health = maxHealth;
+        health = Attackplant[1];
         InvokeRepeating("Regen", 1f, 1f);
         if (!target)
         {
@@ -52,7 +53,7 @@ public class AttackUnit : Unit
     }
     void Regen()
     {
-        if (health < maxHealth)
+        if (health < Attackplant[1])
         {
             health += regenRate;
         }

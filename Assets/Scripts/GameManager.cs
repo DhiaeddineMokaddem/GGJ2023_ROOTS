@@ -82,10 +82,31 @@ public class GameManager : MonoBehaviour
         isChoosing = false;
     }
 
-    //public void UpgradeTurret()
-    //{
-    //    currentHit.upgradeUnit();
-    //    removeFocus();
-    //}
-    
+    public void UpgradeTurret()
+    {
+        if (currentHit.unit is RessourceUnit)
+        {
+            RessourceUnit x = (RessourceUnit)currentHit.unit;
+            x.Recouceplant[0] += 2f;
+            x.Recouceplant[1] += 2f;
+            x.Recouceplant[3] += 0.2f;
+        }
+        if (currentHit.unit is AttackUnit)
+        {
+            AttackUnit x = (AttackUnit)currentHit.unit;
+            x.Attackplant[0] += 2f;
+            x.Attackplant[1] += 2f;
+            x.Attackplant[3] += 01f;
+        }
+        /*
+        if (currentHit.unit is DefenseUnit)
+        {
+            DefenseUnit x = (DefenseUnit)currentHit.unit;
+            x.Defenseplant[0] += 2f;
+            x.Defenseplant[1] += 3f;        
+        }
+        */
+        removeFocus();
+    }
+
 }
