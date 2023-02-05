@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public ChoosingCanvas chooseCanvas;
+    public ChoosingCanvas upgradeCanvas;
     public bool isChoosing;
     private void Awake()
     {
@@ -53,18 +54,27 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetMouseButton(0) && currentHit.canBeBuiltOn)//if clicked on tile and tile is empty show canvas to build new roots
             {
-                chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
-                isChoosing = true;
-            }
-            else//if clicked on tile and tile is not empty show canvas to upgrade roots
-            //if filled show upgrade + cancle canvas
-            {
-                if (Input.GetMouseButton(0) && !currentHit.canBeBuiltOn)
+                if (!currentHit.filled)
                 {
                     chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
                     isChoosing = true;
                 }
+                else
+                {
+                    upgradeCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
+                    isChoosing = true;
+                }
             }
+            //else (Input.GetMouseButton(0)
+            ////if clicked on tile and tile is not empty show canvas to upgrade roots
+            ////if filled show upgrade + cancle canvas
+            //{
+            //    if (Input.GetMouseButton(0) && !currentHit.canBeBuiltOn)
+            //    {
+            //        chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
+            //        isChoosing = true;
+            //    }
+            //}
         }
     }
     public void SpawnTurret(Unit theUnit)
@@ -79,31 +89,48 @@ public class GameManager : MonoBehaviour
     public void removeFocus()
     {
         chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 1000, currentHit.transform.position.z);
+        upgradeCanvas.transform.position = new Vector3(currentHit.transform.position.x, 1000, currentHit.transform.position.z);
         isChoosing = false;
     }
 
     public void UpgradeTurret()
     {
+        Debug.Log("made it here");
         if (currentHit.unit is RessourceUnit)
         {
             RessourceUnit x = (RessourceUnit)currentHit.unit;
-            x.Recouceplant[0] += 2f;
-            x.Recouceplant[1] += 2f;
-            x.Recouceplant[3] += 0.2f;
+            if(x.Recouceplant[0] < GameManager.instance.water)
+            {
+                x.Recouceplant[0] += 2f;
+                x.Recouceplant[1] += 2f;
+                x.Recouceplant[3] += 0.2f;
+                Debug.Log(x.Recouceplant[0] + "/" + x.Recouceplant[1] + "/" + x.Recouceplant[2]);
+                GameManager.instance.water -= x.Recouceplant[0];
+            }
         }
         if (currentHit.unit is AttackUnit)
         {
             AttackUnit x = (AttackUnit)currentHit.unit;
-            x.Attackplant[0] += 2f;
-            x.Attackplant[1] += 2f;
-            x.Attackplant[3] += 01f;
+            if (x.Attackplant[0] < GameManager.instance.water)
+            {
+                x.Attackplant[0] += 2f;
+                x.Attackplant[1] += 2f;
+                x.Attackplant[3] += 01f;
+                Debug.Log(x.Attackplant[0] + "/" + x.Attackplant[1] + "/" + x.Attackplant[2]);
+                GameManager.instance.water -= x.Attackplant[0];
+            }
         }
         
         if (currentHit.unit is DefenderUnit)
         {
             DefenderUnit x = (DefenderUnit)currentHit.unit;
-            x.deffenseplant[0] += 2f;
-            x.deffenseplant[1] += 3f;        
+            if (x.deffenseplant[0] < GameManager.instance.water)
+            {
+                x.deffenseplant[0] += 2f;
+                x.deffenseplant[1] += 3f;
+                Debug.Log(x.deffenseplant[0] + "/" + x.deffenseplant[1]);
+                GameManager.instance.water -= x.deffenseplant[0];
+            }
         }
         
         removeFocus();
