@@ -36,8 +36,8 @@ public class bluebullet : MonoBehaviour
         //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
 
         // Apply force in direction of target
-        //rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
-        transform.Translate(direction* speed *Time.fixedDeltaTime);
+        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
+        //transform.Translate(direction* speed *Time.fixedDeltaTime);
 
         /*
         // Limit the maximum speed of the projectile
@@ -48,21 +48,21 @@ public class bluebullet : MonoBehaviour
         */
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "enemy")
+    //    {
+
+    //        Destroy(gameObject);
+    //    }
+    //}
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy")
         {
 
             Destroy(gameObject);
         }
-    }
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "enemy")
-    //    {
-            
-    //        Destroy(gameObject);
-    //    }
 
-    //}
+    }
 }
