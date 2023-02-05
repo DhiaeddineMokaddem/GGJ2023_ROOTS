@@ -10,7 +10,7 @@ enum tileTypes
 public class Tile : MonoBehaviour
 {
     [SerializeField] bool isDown=true;
-    
+    [SerializeField] GameObject rootLinks;
     public Unit unit; //the unit that occupies this tile
     public bool canGoUp; //if the tile can go up when hovered over
     public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
@@ -43,6 +43,7 @@ public class Tile : MonoBehaviour
         {
             unit = unitToSpawn;
             Instantiate(unit, transform);
+            rootLinks.SetActive(true);
         }
     }
     public IEnumerator goUp() //moves tiles up by distance
