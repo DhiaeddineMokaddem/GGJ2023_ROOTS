@@ -16,7 +16,7 @@ public class BaseUnit : Unit
     // Update is called once per frame
     void Update()
     {
-        
+        Generate();
     }
     void Generate()
     {
