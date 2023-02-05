@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject prefab;
-    public float spawnDelay = 1f;
+    public float SpawnedObject = 1f;
     public float Timer;
 
     private void Start()
@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
         if (Timer <= 0)
         {
             Instantiate(prefab, transform.position, Quaternion.identity);
-            Timer = spawnDelay;
+            Timer = SpawnedObject;
         }
         else
         {
