@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8032794529254534774}
   - component: {fileID: 7536424711077421558}
   - component: {fileID: 7654687635564213174}
-  - component: {fileID: 5201267035110853726}
   - component: {fileID: -6480069321346082466}
+  - component: {fileID: 2709008647494575106}
   m_Layer: 0
-  m_Name: bullet
-  m_TagString: Bullet
+  m_Name: BlueBullet
+  m_TagString: BulletAlly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,21 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5201267035110853726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2895788476557652280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96573fb1df822ae41b972c526a8facfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rotationSpeed: 5
-  damage: 20
 --- !u!54 &-6480069321346082466
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +115,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2709008647494575106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895788476557652280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc0f290c3e35174f9d91d6eaec9f3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotationSpeed: 5
+  damage: 10
