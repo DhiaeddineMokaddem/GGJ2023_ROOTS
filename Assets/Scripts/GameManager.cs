@@ -98,14 +98,14 @@ public class GameManager : MonoBehaviour
             x.Attackplant[1] += 2f;
             x.Attackplant[3] += 01f;
         }
-        /*
-        if (currentHit.unit is DefenseUnit)
+        
+        if (currentHit.unit is DefenderUnit)
         {
-            DefenseUnit x = (DefenseUnit)currentHit.unit;
-            x.Defenseplant[0] += 2f;
-            x.Defenseplant[1] += 3f;        
+            DefenderUnit x = (DefenderUnit)currentHit.unit;
+            x.deffenseplant[0] += 2f;
+            x.deffenseplant[1] += 3f;        
         }
-        */
+        
         removeFocus();
     }
 
