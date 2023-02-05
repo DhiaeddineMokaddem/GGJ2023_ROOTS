@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     [SerializeField] bool isDown=true;
     [SerializeField] GameObject rootLinks;
     public Unit unit; //the unit that occupies this tile
+   
     public bool canGoUp; //if the tile can go up when hovered over
     public bool canBeBuiltOn;
     public bool canBeMadeBuildable;
@@ -36,6 +37,12 @@ public class Tile : MonoBehaviour
                 //Debug.Log("is down true");
                 //transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             }
+        }
+        if(myType == tileTypes.waterBorder && unit is RessourceUnit)
+        {
+            RessourceUnit x = (RessourceUnit)unit;
+            x.Generate(5*Time.deltaTime);
+
         }
     }
     [SerializeField] float Speed = 0.5f;
