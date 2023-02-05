@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
         if (!isChoosing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 10000) && !Input.GetMouseButtonDown(1))
+            int mask = 1 << LayerMask.NameToLayer("Tile");
+            if (Physics.Raycast(ray, out RaycastHit hit, 10000, mask) && !Input.GetMouseButtonDown(1))
             {
                 if (hit.transform.tag == "Tile")
                 {
