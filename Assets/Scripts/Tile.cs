@@ -13,6 +13,8 @@ public class Tile : MonoBehaviour
     [SerializeField] GameObject rootLinks;
     public Unit unit; //the unit that occupies this tile
     public bool canGoUp; //if the tile can go up when hovered over
+    public bool canBeBuiltOn;
+    [SerializeField] tileTypes myType;
     public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
     private void Update()
     {
@@ -45,6 +47,12 @@ public class Tile : MonoBehaviour
             Instantiate(unit, transform);
             rootLinks.SetActive(true);
         }
+        Ray ray = new Ray(transform.position,Vector3.right);
+        int mask = 1 << LayerMask.NameToLayer("Tile");
+        if (Physics.Raycast(ray, out RaycastHit hit, 10000, mask))
+        {
+
+        }
     }
     public IEnumerator goUp() //moves tiles up by distance
     {    
@@ -68,5 +76,12 @@ public class Tile : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         isDown = true;
     }
-
+    public void makeMeSpawnabble()
+    {
+        if(myType != tileTypes.water)
+        {
+            canBeBuiltOn = true;
+            //maybe change visuals too
+        }
+    }
 }

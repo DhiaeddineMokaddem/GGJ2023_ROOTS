@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2730677565504375606}
   - component: {fileID: 2730677565504375611}
   - component: {fileID: 2730677565504375607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -64,6 +64,8 @@ MonoBehaviour:
   rootLinks: {fileID: 7434893403139168418}
   unit: {fileID: 0}
   canGoUp: 1
+  canBeBuiltOn: 0
+  myType: 0
   Speed: 5
   Distance: 0.2
 --- !u!1001 &1018517782126057510
@@ -73,6 +75,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2730677565504375606}
     m_Modifications:
+    - target: {fileID: 3494991781451135500, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857220395305104662, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171368616597040498, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003620407839971260, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040425650771914769, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6538545237801644768, guid: f759fe85d88f0624d9d4d26b6b21a03f,
         type: 3}
       propertyPath: m_RootOrder
@@ -128,6 +155,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6774238735222067712, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7569579753796763780, guid: f759fe85d88f0624d9d4d26b6b21a03f,
         type: 3}
       propertyPath: m_Name
@@ -135,8 +167,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7569579753796763780, guid: f759fe85d88f0624d9d4d26b6b21a03f,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569579753796763780, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991732943164567598, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121097842025691254, guid: f759fe85d88f0624d9d4d26b6b21a03f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f759fe85d88f0624d9d4d26b6b21a03f, type: 3}
@@ -238,6 +285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lightmap unwraped cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef3a103b899f4f44980b9ce29eee5a5f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef3a103b899f4f44980b9ce29eee5a5f, type: 3}
