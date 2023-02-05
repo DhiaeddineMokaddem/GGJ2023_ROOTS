@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private int health;
     [SerializeField] private int maxHealth;
     [SerializeField] private int range;
-    [SerializeField] private int damage;
+    public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;
    
@@ -22,7 +22,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-       
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("attackable").transform;
+        }
+        //assign the target to the nearest game object with "attackable" tag
         
         attackTimer -= Time.deltaTime;
 
@@ -62,5 +66,13 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("attackable"))
+        {
+            target = other.transform;
+        }
+        
     }
 }

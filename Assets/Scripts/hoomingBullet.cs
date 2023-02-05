@@ -5,7 +5,7 @@ public class hoomingBullet : MonoBehaviour
     private Transform target;  // The target to follow
     public float speed;  // The speed of the projectile
     public float rotationSpeed;  // The speed at which the projectile rotates towards the target
-    public float damage = 20;  // The damage the projectile deals on impact
+    public float damage;  // The damage the projectile deals on impact
     
     private Rigidbody rb;
 
@@ -16,7 +16,7 @@ public class hoomingBullet : MonoBehaviour
         //transform.parent.GetComponent<Enemy>();
         // Get the target from the parent
         target = transform.parent.GetComponent<Enemy>().target;
-
+        damage = transform.parent.GetComponent<Enemy>().damage;
     }
 
     void Update()
