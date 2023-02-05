@@ -25,7 +25,7 @@ public class RessourceUnit : Unit
             health += regenRate;
         }
     }
-    private void Generate(float addRate)
+    public void Generate(float addRate)
     {
         GameManager.instance.waterResource += addRate;
     }
