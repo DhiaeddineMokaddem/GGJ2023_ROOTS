@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseUnit : Unit
 {
     // Start is called before the first frame update
+    public float waterGenerateRate;
     void Start()
     {
         health = maxHealth;
@@ -16,6 +17,10 @@ public class BaseUnit : Unit
     void Update()
     {
         
+    }
+    void Generate()
+    {
+        GameManager.instance.water += waterGenerateRate * Time.deltaTime;
     }
     void takeDamage(int damage)
     {
