@@ -5,24 +5,45 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject prefab;
-    public float SpawnedObject = 1f;
-    public float Timer;
+    public GameObject[] Spawners;
+    
+    public float WaitForGameToStart = 10f; // a changable 
+    public float SpawnedRate = 1f; // spawn rate of enemies
+    public float Timer; // cooldown between each enemy spawn
+
+
+
+    Transform parentTransform;
+    Transform[] childTransforms;
 
     private void Start()
     {
-        
+        parentTransform = gameObject.GetComponent<Transform>();
+        childTransforms = parentTransform.GetComponentsInChildren<Transform>();
     }
 
     private void Update()
     {
-        if (Timer <= 0)
+
+        if (WaitForGameToStart >= 0)
         {
-            Instantiate(prefab, transform.position, Quaternion.identity);
-            Timer = SpawnedObject;
+            WaitForGameToStart -= Time.deltaTime;
         }
         else
         {
-            Timer -= Time.deltaTime;
+            if (Timer <= 0)
+            {
+                Instantiate(prefab, childTransforms[Random.Range(0,transform.childCount)].transform.position, Quaternion.identity);
+                Timer = SpawnedRate;
+            }
+            else
+            {
+                Timer -= Time.deltaTime;
+            }
         }
+
+        //create an array of children gameobjets
+
+
     }
 }
