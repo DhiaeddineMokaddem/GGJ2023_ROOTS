@@ -113,8 +113,8 @@ MonoBehaviour:
   Projectile: {fileID: 2895788476557652280, guid: 2a0923ed26c1ae64fa00d7446b2c3796,
     type: 3}
   target: {fileID: 6110855493169939519, guid: eb93dca0618351a4ebbd049d14d20a3e, type: 3}
-  speed: 0
-  maxHealth: 0
-  range: 0
-  damage: 0
-  attackRate: 0
+  speed: 5
+  maxHealth: 100
+  range: 10
+  damage: 2
+  attackRate: 2
