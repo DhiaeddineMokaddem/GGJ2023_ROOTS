@@ -17,11 +17,28 @@ public class BaseUnit : Unit
     {
         
     }
+    void takeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     void Regen()
     {
         if (health < maxHealth)
         {
+            Debug.Log("Main tree regen");
             health += regenRate;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            takeDamage(10);
+            Debug.Log("base took damage");
         }
     }
 }

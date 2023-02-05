@@ -22,7 +22,24 @@ public class DefenderUnit : Unit
     {
         if (health < maxHealth)
         {
+            Debug.Log("Defender regen");
             health += regenRate;
+        }
+    }
+    void takeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            takeDamage(10);
+            Debug.Log("Unit took damage");
         }
     }
 }
