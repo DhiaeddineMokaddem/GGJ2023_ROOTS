@@ -55,22 +55,22 @@ public class Tile : MonoBehaviour
             rootLinks.SetActive(true);
             Ray ray = new Ray(transform.position, Vector3.right);
             int mask = 1 << LayerMask.NameToLayer("Tile");
-            if (Physics.Raycast(ray, out RaycastHit hit, 10000, mask))
+            if (Physics.Raycast(ray, out RaycastHit hit, 1, mask))
             {
                 hit.transform.GetComponent<Tile>().makeMeSpawnabble();
             }
             ray = new Ray(transform.position, Vector3.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit2, 10000, mask))
+            if (Physics.Raycast(ray, out RaycastHit hit2, 1, mask))
             {
                 hit2.transform.GetComponent<Tile>().makeMeSpawnabble();
             }
             ray = new Ray(transform.position, Vector3.left);
-            if (Physics.Raycast(ray, out RaycastHit hit3, 10000, mask))
+            if (Physics.Raycast(ray, out RaycastHit hit3, 1, mask))
             {
                 hit3.transform.GetComponent<Tile>().makeMeSpawnabble();
             }
             ray = new Ray(transform.position, Vector3.back);
-            if (Physics.Raycast(ray, out RaycastHit hit4, 10000, mask))
+            if (Physics.Raycast(ray, out RaycastHit hit4, 1, mask))
             {
                 hit4.transform.GetComponent<Tile>().makeMeSpawnabble();
             }

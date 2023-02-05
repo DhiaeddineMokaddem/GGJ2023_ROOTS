@@ -27,7 +27,7 @@ public class RessourceUnit : Unit
     }
     public void Generate(float addRate)
     {
-        GameManager.instance.waterResource += addRate;
+        GameManager.instance.water += addRate;
     }
     private void takeDmg(int dmgAmount)
     {
