@@ -35698,6 +35698,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   regenRate: 0
+  placementCost: 0
+  Attackplant:
+  - 5
+  - 10
+  - 10
   range: 5
   Projectile: {fileID: 0}
   damage: 10
@@ -95599,3 +95604,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d30645fa3248f84693c7d546048f9bd, type: 3}
+--- !u!1001 &8347511681081303393
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.972
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.9871
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595572318717974879, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 892849244840044392, guid: 7d2b5391d91ebcf439fdb4807734a148,
+        type: 3}
+      propertyPath: m_Name
+      value: Def unit Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d2b5391d91ebcf439fdb4807734a148, type: 3}
