@@ -63,8 +63,9 @@ MonoBehaviour:
   isDown: 0
   rootLinks: {fileID: 7434893403139168418}
   unit: {fileID: 0}
-  canGoUp: 1
+  canGoUp: 0
   canBeBuiltOn: 0
+  canBeMadeBuildable: 1
   myType: 0
   Speed: 5
   Distance: 0.2

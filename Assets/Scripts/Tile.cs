@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour
     public Unit unit; //the unit that occupies this tile
     public bool canGoUp; //if the tile can go up when hovered over
     public bool canBeBuiltOn;
+    public bool canBeMadeBuildable;
     [SerializeField] tileTypes myType;
     public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
     private void Update()
@@ -41,17 +42,32 @@ public class Tile : MonoBehaviour
     [SerializeField] float Distance = 0.5f;
     public void spawnUnit(Unit unitToSpawn)
     {
-        if (!filled)
+        if (!filled && canBeBuiltOn)
         {
             unit = unitToSpawn;
             Instantiate(unit, transform);
             rootLinks.SetActive(true);
-        }
-        Ray ray = new Ray(transform.position,Vector3.right);
-        int mask = 1 << LayerMask.NameToLayer("Tile");
-        if (Physics.Raycast(ray, out RaycastHit hit, 10000, mask))
-        {
-
+            Ray ray = new Ray(transform.position, Vector3.right);
+            int mask = 1 << LayerMask.NameToLayer("Tile");
+            if (Physics.Raycast(ray, out RaycastHit hit, 10000, mask))
+            {
+                hit.transform.GetComponent<Tile>().makeMeSpawnabble();
+            }
+            ray = new Ray(transform.position, Vector3.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit2, 10000, mask))
+            {
+                hit2.transform.GetComponent<Tile>().makeMeSpawnabble();
+            }
+            ray = new Ray(transform.position, Vector3.left);
+            if (Physics.Raycast(ray, out RaycastHit hit3, 10000, mask))
+            {
+                hit3.transform.GetComponent<Tile>().makeMeSpawnabble();
+            }
+            ray = new Ray(transform.position, Vector3.back);
+            if (Physics.Raycast(ray, out RaycastHit hit4, 10000, mask))
+            {
+                hit4.transform.GetComponent<Tile>().makeMeSpawnabble();
+            }
         }
     }
     public IEnumerator goUp() //moves tiles up by distance
@@ -78,9 +94,10 @@ public class Tile : MonoBehaviour
     }
     public void makeMeSpawnabble()
     {
-        if(myType != tileTypes.water)
+        if(canBeMadeBuildable)
         {
             canBeBuiltOn = true;
+            canGoUp = true;
             //maybe change visuals too
         }
     }

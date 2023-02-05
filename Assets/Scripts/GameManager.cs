@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
         if(currentHit != null)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && currentHit.canBeBuiltOn)
             {
                 chooseCanvas.transform.position = new Vector3(currentHit.transform.position.x, 2, currentHit.transform.position.z);
                 isChoosing = true;
