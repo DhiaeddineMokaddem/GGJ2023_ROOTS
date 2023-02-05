@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DefenderUnit : Unit
 {
+    public float[] deffenseplant = { 5f, 50f };//0upgrade worth/1plant health
     // Start is called before the first frame update    
     private float hp;
     void Start()
     {
-        hp = maxHealth;
+        hp = deffenseplant[1];
         regenRate = 2f;
         InvokeRepeating("Regen", 1f, 1f);
     }
@@ -20,7 +21,7 @@ public class DefenderUnit : Unit
     }
     void Regen()
     {
-        if (health < maxHealth)
+        if (health < deffenseplant[1])
         {
             Debug.Log("Defender regen");
             health += regenRate;
