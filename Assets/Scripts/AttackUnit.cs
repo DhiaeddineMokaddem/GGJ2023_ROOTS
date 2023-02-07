@@ -8,7 +8,7 @@ public class AttackUnit : Unit
     public float[] Attackplant = { 5f, 10f, 10f };// 0upgrade worth/1plant max health/2attack dmg
     // Start is called before the first frame update
     [SerializeField] private int range = 5;
-    [SerializeField] private bluebullet Projectile;
+    [SerializeField] private GameObject Projectile;
     [SerializeField] public int damage = 10;
     [SerializeField] private float attackRate = 1f; // Attack rate in seconds
     private float attackTimer = 0f;
@@ -46,10 +46,8 @@ public class AttackUnit : Unit
     {
         if (target)
         {
-            bluebullet x = Instantiate(Projectile, transform.position, Quaternion.identity);
-            x.target = target;
-            x.damage = damage;
-            Debug.Log(" Unit Attacking enemy");
+            Instantiate(Projectile, transform.position, Quaternion.identity, transform);
+        Debug.Log(" Unit Attacking enemy");
         }
         
     }
@@ -65,7 +63,7 @@ public class AttackUnit : Unit
         health -= damage;
         if (health <= 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -73,7 +71,6 @@ public class AttackUnit : Unit
         if (other.CompareTag("enemy"))
         {
             target = other.transform;
-            //Destroy(other.gameObject);
         }
         
     }
@@ -81,7 +78,7 @@ public class AttackUnit : Unit
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            takeDamage(1);
+            takeDamage(10);
             Debug.Log("Unit took damage");
         }
     }

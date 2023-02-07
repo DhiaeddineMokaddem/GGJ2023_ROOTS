@@ -47,8 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   regenRate: 0
-  placementCost: 0
-  waterGenerateRate: 1
 --- !u!1001 &7085268566023795965
 PrefabInstance:
   m_ObjectHideFlags: 0
