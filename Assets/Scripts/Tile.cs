@@ -61,6 +61,7 @@ public class Tile : MonoBehaviour
         if (!filled && canBeBuiltOn)
         {
             unit = Instantiate(unitToSpawn, transform);
+            unit.myTile = this;
             rootLinks.SetActive(true);
             Ray ray = new Ray(transform.position, Vector3.right);
             int mask = 1 << LayerMask.NameToLayer("Tile");
@@ -114,6 +115,90 @@ public class Tile : MonoBehaviour
             canBeBuiltOn = true;
             canGoUp = true;
             myMesh.material.color = Color.white;
+        }
+    }
+    public void makeMeUnspawnabble()
+    {
+        if (canBeMadeBuildable)
+        {
+            canBeBuiltOn = false;
+            canGoUp = false;
+            myMesh.material.color = Color.grey;
+        }
+    }
+    public void MakeSureNeighborsAreStillAvalable()
+    {
+        Ray ray = new Ray(transform.position, Vector3.right);
+        int mask = 1 << LayerMask.NameToLayer("Tile");
+        if (Physics.Raycast(ray, out RaycastHit hit, 1, mask))
+        {
+            hit.transform.GetComponent<Tile>().MakeSureImStillAvalable();
+        }
+        ray = new Ray(transform.position, Vector3.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit2, 1, mask))
+        {
+            hit2.transform.GetComponent<Tile>().MakeSureImStillAvalable();
+        }
+        ray = new Ray(transform.position, Vector3.left);
+        if (Physics.Raycast(ray, out RaycastHit hit3, 1, mask))
+        {
+            hit3.transform.GetComponent<Tile>().MakeSureImStillAvalable();
+        }
+        ray = new Ray(transform.position, Vector3.back);
+        if (Physics.Raycast(ray, out RaycastHit hit4, 1, mask))
+        {
+            hit4.transform.GetComponent<Tile>().MakeSureImStillAvalable();
+        }
+    }
+    public void MakeSureImStillAvalable()
+    {
+        bool isSure = false;
+        Ray ray = new Ray(transform.position, Vector3.right);
+        int mask = 1 << LayerMask.NameToLayer("Tile");
+        if (Physics.Raycast(ray, out RaycastHit hit, 1, mask))
+        {
+            if (hit.transform.GetComponent<Tile>().canGoUp)
+            {
+                isSure = true;
+            }
+        }
+        else
+        {
+            ray = new Ray(transform.position, Vector3.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit2, 1, mask))
+            {
+                if (hit2.transform.GetComponent<Tile>().canGoUp)
+                {
+                    isSure = true;
+                }
+            }
+            else
+            {
+                ray = new Ray(transform.position, Vector3.left);
+                if (Physics.Raycast(ray, out RaycastHit hit3, 1, mask))
+                {
+                    if (hit3.transform.GetComponent<Tile>().canGoUp)
+                    {
+                        isSure = true;
+                    }
+                }
+                else
+                {
+                    ray = new Ray(transform.position, Vector3.back);
+                    if (Physics.Raycast(ray, out RaycastHit hit4, 1, mask))
+                    {
+                        if (hit4.transform.GetComponent<Tile>().canGoUp)
+                        {
+                            isSure = true;
+                        }
+                    }
+                }
+            }
+        }
+        if (!isSure)
+        {
+            rootLinks.SetActive(false);
+            makeMeUnspawnabble();
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
+    public Tile myTile;
     public int level;
     public float upgradeCostPerLevel;
     protected float health; //never call this EVER, always use the healthProp instead. I'll add later the healthbar and the healthProp is needed for that
@@ -43,7 +44,7 @@ public abstract class Unit : MonoBehaviour
         healthProp -= bullet.damage;
         if (healthProp <= 0)
         {
-            Destroy(gameObject); //temporary
+            die();
         }
     }
     public virtual void Upgrade()
@@ -52,5 +53,10 @@ public abstract class Unit : MonoBehaviour
         healthProp /= maxHealth;
         maxHealth += healthBonusPerLevel;
         healthProp *= maxHealth;
+    }
+    protected virtual void die()
+    {
+        myTile.MakeSureNeighborsAreStillAvalable();
+        Destroy(gameObject);
     }
 }
