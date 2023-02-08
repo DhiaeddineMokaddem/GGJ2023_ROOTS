@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseUnit : Unit
+public class MainTreeUnit : Unit
 {
-    public static BaseUnit instance;
+    public static MainTreeUnit instance;
     public float waterGenerateRate;
     void Update()
     {
@@ -12,7 +12,7 @@ public class BaseUnit : Unit
     }
     public override void Upgrade()
     {
-        throw new System.NotImplementedException();
+        base.Upgrade();
     }
     void Generate()
     {

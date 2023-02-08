@@ -50,11 +50,8 @@ public class AttackUnit : Unit
     }
     public override void Upgrade()
     {
-        level++;
+        base.Upgrade();
         damage += damageBonusPerLevel;
         attackRate -= (attackRateBonusPerLevel*attackRate);
-        healthProp /= maxHealth;
-        maxHealth += healthBonusPerLevel;
-        healthProp *= maxHealth;
     }
 }

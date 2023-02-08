@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class DefenderUnit : Unit
 {
-    public override void Upgrade()
-    {
-        level++;
-        healthProp /= maxHealth;
-        maxHealth += healthBonusPerLevel;
-        healthProp *= maxHealth;
-    }
+    //I exist for the sake of existing
+    //all my stuff is inherited from my base class "Unit"
+    //I have nothing special for my own T~T
 }

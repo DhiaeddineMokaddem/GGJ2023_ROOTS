@@ -14,10 +14,7 @@ public class RessourceUnit : Unit
     }
     public override void Upgrade()
     {
-        level++;
+        base.Upgrade();
         resourceGenerateRate += rGRBonusPerLevel;
-        healthProp /= maxHealth;
-        maxHealth += healthBonusPerLevel;
-        healthProp *= maxHealth;
     }
 }

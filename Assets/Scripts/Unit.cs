@@ -11,14 +11,21 @@ public abstract class Unit : MonoBehaviour
     protected float healthProp
     {
         get { return health; }
-        set { health = value; }
+        set 
+        {
+            health = value; 
+            healthBar.SetHealth(health);
+        }
     }
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float regenRate;
     public float placementCost;
+    [SerializeField] private HealthBar healthBar;
     void Start()
     {
-        health = maxHealth;
+        
+        healthBar.SetMaxHealth(maxHealth);
+        healthProp = maxHealth;
         InvokeRepeating("Regen", 1f, 1f);
     }
     void Regen()
@@ -40,5 +47,11 @@ public abstract class Unit : MonoBehaviour
             Destroy(gameObject); //temporary
         }
     }
-    public abstract void Upgrade();
+    public virtual void Upgrade()
+    {
+        level++;
+        healthProp /= maxHealth;
+        maxHealth += healthBonusPerLevel;
+        healthProp *= maxHealth;
+    }
 }
