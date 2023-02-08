@@ -49,10 +49,10 @@ MonoBehaviour:
   level: 0
   upgradeCostPerLevel: 0
   healthBonusPerLevel: 0
-  maxHealth: 1
+  maxHealth: 50
   regenRate: 1
   placementCost: 1
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 3587589877972481160}
   resourceGenerateRate: 1
   rGRBonusPerLevel: 0
 --- !u!1001 &2677930251562984975
@@ -130,6 +130,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2677930251562984975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3587589877972481160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1504279912812974727, guid: 2a805cc8134a7ce4ba01a7528b4fcb8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2677930251562984975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5eb21d6e9dc6534c9cf91ccf4b95c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4012202407669078178
 PrefabInstance:
   m_ObjectHideFlags: 0

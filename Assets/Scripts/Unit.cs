@@ -23,7 +23,6 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     void Start()
     {
-        
         healthBar.SetMaxHealth(maxHealth);
         healthProp = maxHealth;
         InvokeRepeating("Regen", 1f, 1f);

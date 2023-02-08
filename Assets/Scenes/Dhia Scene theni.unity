@@ -7724,12 +7724,12 @@ PrefabInstance:
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canGoUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canBeBuiltOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
@@ -26808,6 +26808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomSpeed: 1
+  speed: 10
 --- !u!1001 &690039223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45942,12 +45943,12 @@ PrefabInstance:
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canGoUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canBeBuiltOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
@@ -47870,12 +47871,12 @@ PrefabInstance:
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canGoUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canBeBuiltOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
@@ -52340,8 +52341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287875509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65487975, y: 0.27, z: -0.148424}
-  m_LocalScale: {x: 3.1832, y: 3.1832, z: 3.1832}
+  m_LocalPosition: {x: 0, y: 0.27, z: 0}
+  m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -71465,12 +71466,12 @@ PrefabInstance:
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canGoUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}
       propertyPath: canBeBuiltOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2730677565504375607, guid: 897aac378cbabe74c8a62a66151dd80b,
         type: 3}

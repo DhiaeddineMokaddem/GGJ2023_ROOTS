@@ -54,7 +54,7 @@ MonoBehaviour:
   maxHealth: 500
   regenRate: 3
   placementCost: 1
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 7566926887826901717}
 --- !u!1001 &459037398020187396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,3 +415,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9071192435979147346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7566926887826901717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1504279912812974727, guid: 2a805cc8134a7ce4ba01a7528b4fcb8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9071192435979147346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5eb21d6e9dc6534c9cf91ccf4b95c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

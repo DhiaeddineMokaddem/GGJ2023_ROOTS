@@ -7,8 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public Image healthSlider;
     public TextMeshProUGUI healthText;
-    //public Gradient gradient;
-    public Image fill;
+    public TextMeshProUGUI maxHealthText;
     private float maxHealth;
     public Image fakeFill;
     void LateUpdate()
@@ -20,7 +19,7 @@ public class HealthBar : MonoBehaviour
     {
         this.maxHealth = maxHealth;
         healthSlider.fillAmount = maxHealth;
-        healthText.text = maxHealth.ToString("0");
+        maxHealthText.text = maxHealth.ToString("0");
     }
     public void SetHealth(float health)
     {
