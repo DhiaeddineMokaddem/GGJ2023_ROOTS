@@ -5015,12 +5015,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  upgradeCostPerLevel: 0
-  healthBonusPerLevel: 0
+  upgradeCostPerLevel: 10
+  healthBonusPerLevel: 20
   maxHealth: 1000
   regenRate: 1
   placementCost: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 7931947092063084665}
   waterGenerateRate: 1
 --- !u!54 &-6786636548428978578
 Rigidbody:
@@ -5256,3 +5256,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8859611012402639614}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7931947092063084665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1504279912812974727, guid: 2a805cc8134a7ce4ba01a7528b4fcb8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8859611012402639614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5eb21d6e9dc6534c9cf91ccf4b95c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
