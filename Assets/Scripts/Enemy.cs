@@ -30,6 +30,13 @@ public class Enemy : MonoBehaviour
         {
             attackTimer -= Time.deltaTime;
         }
+        if (targets.Count > 0)
+        {
+            if (targets[0] == null)
+            {
+                targets.RemoveAt(0);
+            }
+        }
         if (targets.Count>0)
         {
             if (attackTimer <= 0f)

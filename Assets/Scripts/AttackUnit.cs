@@ -15,6 +15,17 @@ public class AttackUnit : Unit
     [SerializeField] private List<Transform> targets = new();
     void Update()
     {
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+        if (targets.Count > 0)
+        {
+            if (targets[0] == null)
+            {
+                targets.RemoveAt(0);
+            }
+        }
         if (targets.Count > 0)
         {
             if (attackTimer <= 0)
@@ -22,10 +33,6 @@ public class AttackUnit : Unit
                 Attack();
                 attackTimer = attackRate;
             }
-        }
-        if(attackTimer > 0)
-        {
-            attackTimer -= Time.deltaTime;
         }
     }
     void Attack()

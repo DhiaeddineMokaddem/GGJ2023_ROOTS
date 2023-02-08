@@ -56,7 +56,7 @@ public abstract class Unit : MonoBehaviour
     }
     protected virtual void die()
     {
-        myTile.MakeSureNeighborsAreStillAvalable();
+        myTile.UnspawnUnit();
         Destroy(gameObject);
     }
 }

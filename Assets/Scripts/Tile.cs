@@ -86,6 +86,12 @@ public class Tile : MonoBehaviour
             }
         }
     }
+    public void UnspawnUnit()
+    {
+        unit = null;
+        rootLinks.SetActive(false);
+        MakeSureNeighborsAreStillAvalable();
+    }
     public IEnumerator goUp() //moves tiles up by distance
     {    
         StopCoroutine("goUp");
@@ -153,52 +159,58 @@ public class Tile : MonoBehaviour
     public void MakeSureImStillAvalable()
     {
         bool isSure = false;
-        Ray ray = new Ray(transform.position, Vector3.right);
-        int mask = 1 << LayerMask.NameToLayer("Tile");
-        if (Physics.Raycast(ray, out RaycastHit hit, 1, mask))
+        if (filled)
         {
-            if (hit.transform.GetComponent<Tile>().canGoUp)
-            {
-                isSure = true;
-            }
+            isSure = true;
         }
         else
         {
-            ray = new Ray(transform.position, Vector3.forward);
-            if (Physics.Raycast(ray, out RaycastHit hit2, 1, mask))
+            Ray ray = new Ray(transform.position, Vector3.right);
+            int mask = 1 << LayerMask.NameToLayer("Tile");
+            if (Physics.Raycast(ray, out RaycastHit hit, 1, mask))
             {
-                if (hit2.transform.GetComponent<Tile>().canGoUp)
+                if (hit.transform.GetComponent<Tile>().filled)
                 {
                     isSure = true;
                 }
             }
             else
             {
-                ray = new Ray(transform.position, Vector3.left);
-                if (Physics.Raycast(ray, out RaycastHit hit3, 1, mask))
+                ray = new Ray(transform.position, Vector3.forward);
+                if (Physics.Raycast(ray, out RaycastHit hit2, 1, mask))
                 {
-                    if (hit3.transform.GetComponent<Tile>().canGoUp)
+                    if (hit2.transform.GetComponent<Tile>().filled)
                     {
                         isSure = true;
                     }
                 }
                 else
                 {
-                    ray = new Ray(transform.position, Vector3.back);
-                    if (Physics.Raycast(ray, out RaycastHit hit4, 1, mask))
+                    ray = new Ray(transform.position, Vector3.left);
+                    if (Physics.Raycast(ray, out RaycastHit hit3, 1, mask))
                     {
-                        if (hit4.transform.GetComponent<Tile>().canGoUp)
+                        if (hit3.transform.GetComponent<Tile>().filled)
                         {
                             isSure = true;
                         }
                     }
+                    else
+                    {
+                        ray = new Ray(transform.position, Vector3.back);
+                        if (Physics.Raycast(ray, out RaycastHit hit4, 1, mask))
+                        {
+                            if (hit4.transform.GetComponent<Tile>().filled)
+                            {
+                                isSure = true;
+                            }
+                        }
+                    }
                 }
             }
-        }
-        if (!isSure)
-        {
-            rootLinks.SetActive(false);
-            makeMeUnspawnabble();
+            if (!isSure)
+            {
+                makeMeUnspawnabble();
+            }
         }
     }
 }
