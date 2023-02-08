@@ -6,22 +6,28 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Bullet Projectile;
     public Transform target;
-    public List<Transform> targets = new();
+    private List<Transform> targets = new();
     [SerializeField] private float speed;
     private float health; //never call this EVER, always use the healthProp instead. I'll add later the healthbar and the healthProp is needed for that
     protected float healthProp
     {
         get { return health; }
-        set { health = value; }
+        set
+        {
+            health = value;
+            healthBar.SetHealth(health);
+        }
     }
     [SerializeField] private int maxHealth;
     [SerializeField] private int range;
     public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;
+    [SerializeField] private HealthBar healthBar;
     void Start()
     {
         attackTimer = 0f;
+        healthBar.SetMaxHealth(maxHealth);
         healthProp = maxHealth;
     }
     void Update()
