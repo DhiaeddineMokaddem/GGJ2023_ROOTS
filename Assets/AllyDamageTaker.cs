@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamageTaker : MonoBehaviour
+public class AllyDamageTaker : MonoBehaviour
 {
-    [SerializeField] Enemy myEnemy;
+    [SerializeField] Unit myUnit;
     [SerializeField] GameObject hitVFX;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BulletAlly"))
+        if (other.CompareTag("BulletEnemy"))
         {
             Instantiate(hitVFX, other.transform.position, Quaternion.identity);
-            myEnemy.takeDamage(other.transform.GetComponent<Bullet>());
+            myUnit.takeDamage(other.transform.GetComponent<Bullet>());
             Destroy(other.gameObject);
         }
     }

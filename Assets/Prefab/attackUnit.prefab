@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3950244267959289289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7304843773063654750}
+  - component: {fileID: 8020529975093916487}
+  - component: {fileID: 3031214163359555421}
+  m_Layer: 0
+  m_Name: DamageDetector
+  m_TagString: attackable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7304843773063654750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950244267959289289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.065, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6110855493169939519}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8020529975093916487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950244267959289289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 1.37, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3031214163359555421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950244267959289289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7384b9b10367a8741b037e8c483f620a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myUnit: {fileID: 6110855493169939523}
+  hitVFX: {fileID: 3626840158469913290, guid: ce4fbceec3331a24fa36f1c37484a008, type: 3}
+--- !u!1 &5888681194332254949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3709200864626806091}
+  m_Layer: 0
+  m_Name: AttackLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3709200864626806091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5888681194332254949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.623, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6110855493169939519}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6110855493169939522
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,11 +102,10 @@ GameObject:
   - component: {fileID: 6110855493169939519}
   - component: {fileID: 6110855493169939523}
   - component: {fileID: -2243247837213335701}
-  - component: {fileID: 3945030540524170387}
   - component: {fileID: -3279710552524473475}
   m_Layer: 0
   m_Name: attackUnit
-  m_TagString: attackable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +123,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3955029360951958259}
+  - {fileID: 3709200864626806091}
+  - {fileID: 7304843773063654750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,19 +140,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c211b91e83fd74ca76697185853336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
+  upgradeCostPerLevel: 0
+  healthBonusPerLevel: 0
   maxHealth: 100
   regenRate: 1
   placementCost: 1
-  Attackplant:
-  - 5
-  - 10
-  - 10
-  range: 5
   Projectile: {fileID: 2709008647494575106, guid: 6a0e22df4f671214497fc1ecae94e201,
     type: 3}
-  damage: 50
+  damage: 10
+  damageBonusPerLevel: 0
   attackRate: 1
-  target: {fileID: 7154776460031171931, guid: a67df032c7f01f9489a4662621c31fa5, type: 3}
+  attackRateBonusPerLevel: 0
+  attackLocation: {fileID: 5888681194332254949}
+  targets: []
 --- !u!135 &-2243247837213335701
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -72,20 +165,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &3945030540524170387
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6110855493169939522}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9, y: 3.96, z: 1}
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3279710552524473475
 Rigidbody:
@@ -99,7 +179,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -143,7 +223,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9ecdbdf4ffce8c245bf0c4a6f39b3de8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.12
+      value: 0.079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9ecdbdf4ffce8c245bf0c4a6f39b3de8,
         type: 3}

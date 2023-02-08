@@ -4,7 +4,6 @@ using UnityEngine;
 enum tileTypes
 {
     normal,
-    water,
     waterBorder
 }
 public class Tile : MonoBehaviour
@@ -12,11 +11,13 @@ public class Tile : MonoBehaviour
     [SerializeField] bool isDown=true;
     [SerializeField] GameObject rootLinks;
     public Unit unit; //the unit that occupies this tile
-   
+    [SerializeField] float Speed;
+    [SerializeField] float Distance;
     public bool canGoUp; //if the tile can go up when hovered over
     public bool canBeBuiltOn;//if the tile has other roots near it 
     public bool canBeMadeBuildable;
     [SerializeField] tileTypes myType;
+    [SerializeField] MeshRenderer myMesh;
     public bool filled { get { return unit != null; } } //checks if the tile has a unit on it
     private void Update()
     {
@@ -41,12 +42,20 @@ public class Tile : MonoBehaviour
         if(myType == tileTypes.waterBorder && unit is RessourceUnit)
         {
             RessourceUnit x = (RessourceUnit)unit;
-            x.Generate(x.Recouceplant[2]*Time.deltaTime);
-
+            x.Generate(x.resourceGenerateRate * Time.deltaTime);
         }
     }
-    [SerializeField] float Speed = 0.5f;
-    [SerializeField] float Distance = 0.5f;
+    private void Start()
+    {
+        if (canBeBuiltOn)
+        {
+            myMesh.material.color = Color.white;
+        }
+        else
+        {
+            myMesh.material.color = Color.grey;
+        }
+    }
     public void spawnUnit(Unit unitToSpawn)
     {
         if (!filled && canBeBuiltOn)
@@ -104,7 +113,7 @@ public class Tile : MonoBehaviour
         {
             canBeBuiltOn = true;
             canGoUp = true;
-            //maybe change visuals too
+            myMesh.material.color = Color.white;
         }
     }
 }

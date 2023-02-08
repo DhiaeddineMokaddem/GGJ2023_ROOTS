@@ -5,84 +5,56 @@ using static UnityEngine.GraphicsBuffer;
 
 public class AttackUnit : Unit
 {
-    public float[] Attackplant = { 5f, 10f, 10f };// 0upgrade worth/1plant max health/2attack dmg
-    // Start is called before the first frame update
-    [SerializeField] private int range = 5;
-    [SerializeField] private bluebullet Projectile;
-    [SerializeField] public int damage = 10;
-    [SerializeField] private float attackRate = 1f; // Attack rate in seconds
-    private float attackTimer = 0f;
-    [SerializeField] public Transform target;
-    void Start()
-    {
-        health = Attackplant[1];
-        InvokeRepeating("Regen", 1f, 1f);
-        if (!target)
-        {
-            target = GameObject.FindGameObjectWithTag("enemy").transform;
-        }
-    }
-
-    // Update is called once per frame
+    [SerializeField] private Bullet Projectile;
+    [SerializeField] public int damage;
+    [SerializeField] public int damageBonusPerLevel;
+    [SerializeField] private float attackRate; // Attack rate in seconds
+    [SerializeField] private float attackRateBonusPerLevel; // this should how a percentage decrease like 10% (aka 0.1, not literally 10)
+    private float attackTimer;
+    [SerializeField] GameObject attackLocation; //the point frrom which the bullets are spawned
+    [SerializeField] private List<Transform> targets = new();
     void Update()
     {
-
-        if (target)
+        if (targets.Count > 0)
         {
-            transform.LookAt(target);
-            if (Vector3.Distance(transform.position, target.position) <= range)
-        {
-            if (attackTimer <= 0f)
+            if (attackTimer <= 0)
             {
                 Attack();
                 attackTimer = attackRate;
             }
         }
+        if(attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
         }
-        attackTimer -= Time.deltaTime;
-        
     }
     void Attack()
     {
-        if (target)
-        {
-            bluebullet x = Instantiate(Projectile, transform.position, Quaternion.identity);
-            x.target = target;
-            x.damage = damage;
-            Debug.Log(" Unit Attacking enemy");
-        }
-        
-    }
-    void Regen()
-    {
-        if (health < Attackplant[1])
-        {
-            health += regenRate;
-        }
-    }
-    void takeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            //Destroy(gameObject);
-        }
+        Bullet x = Instantiate(Projectile, attackLocation.transform.position, Quaternion.identity);
+        x.target = targets[0];
+        x.damage = damage;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("enemy"))
         {
-            target = other.transform;
-            //Destroy(other.gameObject);
-        }
-        
+            targets.Add(other.transform);
+        } 
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.CompareTag("enemy"))
         {
-            takeDamage(1);
-            Debug.Log("Unit took damage");
+            targets.Remove(other.transform);
         }
+    }
+    public override void Upgrade()
+    {
+        level++;
+        damage += damageBonusPerLevel;
+        attackRate -= (attackRateBonusPerLevel*attackRate);
+        healthProp /= maxHealth;
+        maxHealth += healthBonusPerLevel;
+        healthProp *= maxHealth;
     }
 }
