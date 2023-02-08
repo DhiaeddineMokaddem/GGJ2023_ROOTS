@@ -8,14 +8,14 @@ public class GameManager : MonoBehaviour
 
     public Tile currentHit;
     public TextMeshProUGUI resourceText;
-    private float waterResource;
+    private float waterResource=50f;
     public float water
     {
         get { return waterResource; }
         set
         {
             waterResource = value;
-            resourceText.text = "Water Resource : " + value.ToString("0") + "L";
+            resourceText.text = "Water Resource : " + value.ToString("0.0") + "L";
         }
     }
     public ChoosingCanvas chooseCanvas;
@@ -95,44 +95,10 @@ public class GameManager : MonoBehaviour
 
     public void UpgradeTurret()
     {
-        Debug.Log("made it here");
-        if (currentHit.unit is RessourceUnit)
+        if(currentHit.unit.level* currentHit.unit.upgradeCostPerLevel < water)
         {
-            RessourceUnit x = (RessourceUnit)currentHit.unit;
-            if(x.Recouceplant[0] < GameManager.instance.water)
-            {
-                x.Recouceplant[0] += 2f;
-                x.Recouceplant[1] += 2f;
-                x.Recouceplant[3] += 0.2f;
-                Debug.Log(x.Recouceplant[0] + "/" + x.Recouceplant[1] + "/" + x.Recouceplant[2]);
-                GameManager.instance.water -= x.Recouceplant[0];
-            }
+            currentHit.unit.Upgrade();
         }
-        if (currentHit.unit is AttackUnit)
-        {
-            AttackUnit x = (AttackUnit)currentHit.unit;
-            if (x.Attackplant[0] < GameManager.instance.water)
-            {
-                x.Attackplant[0] += 2f;
-                x.Attackplant[1] += 2f;
-                x.Attackplant[3] += 01f;
-                Debug.Log(x.Attackplant[0] + "/" + x.Attackplant[1] + "/" + x.Attackplant[2]);
-                GameManager.instance.water -= x.Attackplant[0];
-            }
-        }
-        
-        if (currentHit.unit is DefenderUnit)
-        {
-            DefenderUnit x = (DefenderUnit)currentHit.unit;
-            if (x.deffenseplant[0] < GameManager.instance.water)
-            {
-                x.deffenseplant[0] += 2f;
-                x.deffenseplant[1] += 3f;
-                Debug.Log(x.deffenseplant[0] + "/" + x.deffenseplant[1]);
-                GameManager.instance.water -= x.deffenseplant[0];
-            }
-        }
-        
         removeFocus();
     }
 

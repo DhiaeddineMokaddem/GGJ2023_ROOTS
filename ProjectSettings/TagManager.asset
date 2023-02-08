@@ -8,8 +8,10 @@ TagManager:
   - attackable
   - Bullet
   - Undefined
-  - enemy
   - BulletAlly
+  - BulletEnemy
+  - enemy
+  - EnemyDamageDetector
   layers:
   - Default
   - TransparentFX

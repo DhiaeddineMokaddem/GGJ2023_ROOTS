@@ -63,12 +63,13 @@ MonoBehaviour:
   isDown: 0
   rootLinks: {fileID: 7434893403139168418}
   unit: {fileID: 0}
+  Speed: 5
+  Distance: 0.2
   canGoUp: 0
   canBeBuiltOn: 0
   canBeMadeBuildable: 1
   myType: 0
-  Speed: 5
-  Distance: 0.2
+  myMesh: {fileID: 8611654735990085569}
 --- !u!1001 &1018517782126057510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,6 +298,12 @@ PrefabInstance:
 --- !u!4 &7478669767811804334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ef3a103b899f4f44980b9ce29eee5a5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6936436207184071493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8611654735990085569 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ef3a103b899f4f44980b9ce29eee5a5f,
     type: 3}
   m_PrefabInstance: {fileID: 6936436207184071493}
   m_PrefabAsset: {fileID: 0}

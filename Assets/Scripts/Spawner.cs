@@ -6,7 +6,8 @@ public class Spawner : MonoBehaviour
 {
     public GameObject prefab;
     public GameObject[] Spawners;
-    
+
+    public bool GameStarted = false;
     public float WaitForGameToStart = 10f; // a changable 
     public float SpawnedRate = 1f; // spawn rate of enemies
     public float Timer; // cooldown between each enemy spawn
@@ -25,21 +26,21 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
 
-        if (WaitForGameToStart >= 0)
-        {
-            WaitForGameToStart -= Time.deltaTime;
-        }
-        else
+        if (WaitForGameToStart <= 0 || GameStarted==true)
         {
             if (Timer <= 0)
             {
-                Instantiate(prefab, childTransforms[Random.Range(0,transform.childCount)].transform.position, Quaternion.identity); // 
+                Instantiate(prefab, childTransforms[Random.Range(0, transform.childCount)].transform.position, Quaternion.identity); // 
                 Timer = SpawnedRate;
             }
             else
             {
                 Timer -= Time.deltaTime;
             }
+        }
+        else
+        {
+            WaitForGameToStart -= Time.deltaTime;            
         }
 
         //create an array of children gameobjets

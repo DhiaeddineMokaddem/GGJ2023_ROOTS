@@ -4,38 +4,33 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject Projectile;
+    [SerializeField] private Bullet Projectile;
     public Transform target;
+    public List<Transform> targets = new();
     [SerializeField] private float speed;
-    private float health;
-    [SerializeField] private int maxHealth = 50;
+    private float health; //never call this EVER, always use the healthProp instead. I'll add later the healthbar and the healthProp is needed for that
+    protected float healthProp
+    {
+        get { return health; }
+        set { health = value; }
+    }
+    [SerializeField] private int maxHealth;
     [SerializeField] private int range;
     public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;
-    GameObject hitVFX;
-    //make array of transform named targets
-
-
-
-
     void Start()
     {
         attackTimer = 0f;
-        health = maxHealth;
+        healthProp = maxHealth;
     }
-
     void Update()
-    {
-        if (!target)
+    {  
+        if(attackTimer > 0f)
         {
-            target = GameObject.FindGameObjectWithTag("attackable").transform;
+            attackTimer -= Time.deltaTime;
         }
-        //assign the target to the nearest game object with "attackable" tag
-        
-        attackTimer -= Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, target.position) <= range)
+        if (targets.Count>0)
         {
             if (attackTimer <= 0f)
             {
@@ -48,42 +43,38 @@ public class Enemy : MonoBehaviour
             Move();
         }
     }
-
     private void Attack()
     {
-        Debug.Log("Attacking");
         //instansiate bullet going in the direction of the target
-        Instantiate(Projectile, transform.position, Quaternion.identity,transform);
-
-
+        Bullet x = Instantiate(Projectile, transform.position, Quaternion.identity);
+        x.target = targets[0];
+        x.damage = damage;
     }
-
     private void Move()
     {
         transform.LookAt(target);
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
-    private void takeDamage(float takenDmg)
+    public void takeDamage(Bullet bullet)
     {
+        healthProp -= bullet.damage;
+        if (healthProp <= 0)
         {
-            health -= takenDmg;
-            if (health <= 0)
-            {
-                Instantiate(hitVFX, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("attackable"))
         {
-            target = other.transform;
-        }
-        if (other.CompareTag("BulletAlly"))
+            targets.Add(other.transform);
+        }    
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("attackable"))
         {
-            takeDamage(10);
+            targets.Remove(other.transform);
         }
-        
     }
 }
