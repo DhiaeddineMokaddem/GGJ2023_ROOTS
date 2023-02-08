@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8239252218097786593, guid: a67df032c7f01f9489a4662621c31fa5, type: 3}
   Spawners: []
-  WaitForGameToStart: 10
+  WaitForGameToStart: 50
   SpawnedRate: 1
   Timer: 0
 --- !u!1 &8838541352271702383

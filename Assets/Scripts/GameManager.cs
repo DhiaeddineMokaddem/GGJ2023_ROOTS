@@ -8,14 +8,14 @@ public class GameManager : MonoBehaviour
 
     public Tile currentHit;
     public TextMeshProUGUI resourceText;
-    private float waterResource;
+    private float waterResource=50f;
     public float water
     {
         get { return waterResource; }
         set
         {
             waterResource = value;
-            resourceText.text = "Water Resource : " + value.ToString("0") + "L";
+            resourceText.text = "Water Resource : " + value.ToString("0.0") + "L";
         }
     }
     public ChoosingCanvas chooseCanvas;
