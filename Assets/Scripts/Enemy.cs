@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject Projectile;
     public Transform target;
+    public List<Transform> targets = new();
     [SerializeField] private float speed;
     private float health;
     [SerializeField] private int maxHealth = 50;
@@ -26,16 +27,13 @@ public class Enemy : MonoBehaviour
     }
 
     void Update()
-    {
-        if (!target)
+    {  
+        if(attackTimer < 0f)
         {
-            target = GameObject.FindGameObjectWithTag("attackable").transform;
+            attackTimer -= Time.deltaTime;
         }
-        //assign the target to the nearest game object with "attackable" tag
-        
-        attackTimer -= Time.deltaTime;
 
-        if (Vector3.Distance(transform.position, target.position) <= range)
+        if (targets.Count>0)
         {
             if (attackTimer <= 0f)
             {
@@ -53,9 +51,7 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Attacking");
         //instansiate bullet going in the direction of the target
-        Instantiate(Projectile, transform.position, Quaternion.identity,transform);
-
-
+        Instantiate(Projectile, transform.position, Quaternion.identity);
     }
 
     private void Move()
@@ -63,10 +59,10 @@ public class Enemy : MonoBehaviour
         transform.LookAt(target);
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
-    private void takeDamage(float takenDmg)
+    public void takeDamage(hoomingBullet bullet)
     {
         {
-            health -= takenDmg;
+            health -= bullet.myDamage;
             if (health <= 0)
             {
             
@@ -78,12 +74,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("attackable"))
         {
-            target = other.transform;
-        }
-        if (other.CompareTag("BulletAlly"))
-        {
-            takeDamage(10);
-        }
-        
+            targets.Add(other.transform);
+        }    
     }
 }

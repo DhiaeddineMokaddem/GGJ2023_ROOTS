@@ -8,7 +8,7 @@ public class hoomingBullet : MonoBehaviour
     public float damage;  // The damage the projectile deals on impact
     public Transform hitVFX;
     private Rigidbody rb;
-
+    public float myDamage;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
