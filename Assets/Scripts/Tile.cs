@@ -43,6 +43,7 @@ public class Tile : MonoBehaviour
         {
             RessourceUnit x = (RessourceUnit)unit;
             x.Generate(x.resourceGenerateRate * Time.deltaTime);
+            Debug.Log(x.resourceGenerateRate);
         }
     }
     private void Start()

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Tile currentHit;
     public TextMeshProUGUI resourceText;
     private float waterResource=50f;
+    public float waterAmountToWin;
     public float water
     {
         get { return waterResource; }
@@ -16,11 +17,19 @@ public class GameManager : MonoBehaviour
         {
             waterResource = value;
             resourceText.text = "Water Resource : " + value.ToString("0.0") + "L";
+            if(water > waterAmountToWin)
+            {
+                Win();
+            }
         }
     }
     public ChoosingCanvas chooseCanvas;
     public ChoosingCanvas upgradeCanvas;
     public bool isChoosing;
+
+    public int attackTurrCost;
+    public int rootTurrCost;
+    public int defenceTurrCost;
     private void Awake()
     {
         if (instance == null)//singleton class
@@ -80,12 +89,12 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnTurret(Unit theUnit)
     {
+        removeFocus();
         if(theUnit.placementCost < water)
         {
             currentHit.spawnUnit(theUnit);
             water -= theUnit.placementCost;
         }
-        removeFocus();
     }
     public void removeFocus()
     {
@@ -93,14 +102,35 @@ public class GameManager : MonoBehaviour
         upgradeCanvas.transform.position = new Vector3(currentHit.transform.position.x, 1000, currentHit.transform.position.z);
         isChoosing = false;
     }
-
     public void UpgradeTurret()
     {
+        removeFocus();
         if(currentHit.unit.level* currentHit.unit.upgradeCostPerLevel < water)
         {
+            water -= currentHit.unit.level * currentHit.unit.upgradeCostPerLevel;
             currentHit.unit.Upgrade();
         }
-        removeFocus();
     }
-
+    public void KillPlant()
+    {
+        if (currentHit.filled)
+        {
+            removeFocus();
+            currentHit.unit.die();
+        }
+    }
+    public void Win()
+    {
+        Time.timeScale = 0;
+        Debug.Log("u won");
+    }
+    public void Lose()
+    {
+        Time.timeScale= 0;
+        Debug.Log("u lost");
+    }
+    public void addWater(float Amount)
+    {
+        water += Amount;
+    }
 }

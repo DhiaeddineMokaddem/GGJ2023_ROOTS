@@ -22,7 +22,7 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] protected float regenRate;
     public float placementCost;
     [SerializeField] private HealthBar healthBar;
-    void Start()
+    public void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
         healthProp = maxHealth;
@@ -54,7 +54,7 @@ public abstract class Unit : MonoBehaviour
         maxHealth += healthBonusPerLevel;
         healthProp *= maxHealth;
     }
-    protected virtual void die()
+    public virtual void die()
     {
         myTile.UnspawnUnit();
         Destroy(gameObject);

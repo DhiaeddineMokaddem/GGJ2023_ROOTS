@@ -18,4 +18,8 @@ public class MainTreeUnit : Unit
     {
         GameManager.instance.water += waterGenerateRate * Time.deltaTime;
     }
+    public override void die()
+    {
+        GameManager.instance.Lose();
+    }
 }
