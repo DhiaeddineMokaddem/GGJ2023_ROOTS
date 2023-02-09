@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
         }
     }
     [SerializeField] private int maxHealth;
-    [SerializeField] private int range;
     public int damage;
     [SerializeField] private float attackRate; // Attack rate in seconds
     private float attackTimer;

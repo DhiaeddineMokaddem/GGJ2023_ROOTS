@@ -6,7 +6,7 @@ public class UpgradeCanvas : ChoosingCanvas
 {
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI upgradeText;
-    protected void Update()
+    protected new void Update()
     {
         base.Update();
         if(GameManager.instance.isChoosing)

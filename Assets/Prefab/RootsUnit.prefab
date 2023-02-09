@@ -48,15 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myTile: {fileID: 0}
-  level: 0
-  upgradeCostPerLevel: 0
-  healthBonusPerLevel: 0
-  maxHealth: 50
-  regenRate: 1
+  level: 1
+  upgradeCostPerLevel: 5
+  healthBonusPerLevel: 2.5
+  maxHealth: 25
+  regenRate: 0.5
   placementCost: 1
   healthBar: {fileID: 3587589877972481160}
-  resourceGenerateRate: 1
-  rGRBonusPerLevel: 0
+  resourceGenerateRate: 0.25
+  rGRBonusPerLevel: 0.25
 --- !u!1 &7654543592421538993
 GameObject:
   m_ObjectHideFlags: 0

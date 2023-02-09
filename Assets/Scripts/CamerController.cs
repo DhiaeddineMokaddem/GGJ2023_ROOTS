@@ -7,6 +7,7 @@ public class CamerController : MonoBehaviour
 {
     public float ZoomSpeed;
     public float speed;
+    public Camera overLayCam;
     void Update()
     {
         MoveCamera();
@@ -22,11 +23,13 @@ public class CamerController : MonoBehaviour
         {
             //transform.Translate(Vector3.forward * 10f);
             Camera.main.orthographicSize -= ZoomSpeed;
+            overLayCam.orthographicSize = Camera.main.orthographicSize;
         }
         //get mouse roller and zoom in
         if (Input.GetAxis("Mouse ScrollWheel") < 0 && Camera.main.orthographicSize >= 1)
         {
             Camera.main.orthographicSize += ZoomSpeed;
+            overLayCam.orthographicSize = Camera.main.orthographicSize;
         }
         //fix the max
         if (Camera.main.orthographicSize > 13)

@@ -5,7 +5,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    public float timePassed;
     public Tile currentHit;
     public TextMeshProUGUI resourceText;
     private float waterResource=50f;
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        timePassed += Time.deltaTime;
         if (!isChoosing)//raycast on tile to move it up
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

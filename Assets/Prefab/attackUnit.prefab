@@ -141,19 +141,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c211b91e83fd74ca76697185853336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  upgradeCostPerLevel: 0
-  healthBonusPerLevel: 0
+  myTile: {fileID: 0}
+  level: 1
+  upgradeCostPerLevel: 10
+  healthBonusPerLevel: 5
   maxHealth: 50
-  regenRate: 1
-  placementCost: 1
+  regenRate: 0.5
+  placementCost: 5
   healthBar: {fileID: 5955587505694547032}
   Projectile: {fileID: 2709008647494575106, guid: 6a0e22df4f671214497fc1ecae94e201,
     type: 3}
   damage: 10
-  damageBonusPerLevel: 0
-  attackRate: 1
-  attackRateBonusPerLevel: 0
+  damageBonusPerLevel: 2.5
+  attackRate: 2
+  attackRateBonusPerLevel: 0.1
   attackLocation: {fileID: 5888681194332254949}
   targets: []
 --- !u!135 &-2243247837213335701

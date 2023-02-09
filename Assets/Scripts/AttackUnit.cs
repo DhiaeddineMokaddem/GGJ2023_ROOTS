@@ -6,13 +6,13 @@ using static UnityEngine.GraphicsBuffer;
 public class AttackUnit : Unit
 {
     [SerializeField] private Bullet Projectile;
-    [SerializeField] public int damage;
-    [SerializeField] public int damageBonusPerLevel;
+    [SerializeField] public float damage;
+    [SerializeField] public float damageBonusPerLevel;
     [SerializeField] private float attackRate; // Attack rate in seconds
     [SerializeField] private float attackRateBonusPerLevel; // this should how a percentage decrease like 10% (aka 0.1, not literally 10)
     private float attackTimer;
     [SerializeField] GameObject attackLocation; //the point frrom which the bullets are spawned
-    [SerializeField] private List<Transform> targets = new();
+    private List<Transform> targets = new();
     void Update()
     {
         if (attackTimer > 0)
