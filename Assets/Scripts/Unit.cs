@@ -19,24 +19,33 @@ public abstract class Unit : MonoBehaviour
         }
     }
     [SerializeField] protected float maxHealth;
+    protected float maxHealthProp
+    {
+        get { return maxHealth; }
+        set
+        {
+            maxHealth = value;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+    }
     [SerializeField] protected float regenRate;
     public float placementCost;
     [SerializeField] private HealthBar healthBar;
     public void Start()
     {
-        healthBar.SetMaxHealth(maxHealth);
-        healthProp = maxHealth;
+        healthBar.SetMaxHealth(maxHealthProp);
+        healthProp = maxHealthProp;
         InvokeRepeating("Regen", 1f, 1f);
     }
     void Regen()
     {
-        if (healthProp + regenRate < maxHealth)
+        if (healthProp + regenRate < maxHealthProp)
         {
             healthProp += regenRate;
         }
         else
         {
-            healthProp = maxHealth;
+            healthProp = maxHealthProp;
         }
     }
     public void takeDamage(Bullet bullet)
@@ -50,9 +59,9 @@ public abstract class Unit : MonoBehaviour
     public virtual void Upgrade()
     {
         level++;
-        healthProp /= maxHealth;
-        maxHealth += healthBonusPerLevel;
-        healthProp *= maxHealth;
+        healthProp /= maxHealthProp;
+        maxHealthProp += healthBonusPerLevel;
+        healthProp *= maxHealthProp;
     }
     public virtual void die()
     {

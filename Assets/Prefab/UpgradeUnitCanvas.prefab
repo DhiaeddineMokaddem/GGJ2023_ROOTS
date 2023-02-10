@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 8250280046239142698}
   upgradeText: {fileID: 869847508932482081}
+  upgradeButton: {fileID: 4904491835603562364}
 --- !u!1 &2767400959711239834
 GameObject:
   m_ObjectHideFlags: 0

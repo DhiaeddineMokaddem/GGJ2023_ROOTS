@@ -8,7 +8,7 @@ public class UpgradeCanvas : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI upgradeText;
-
+    public Button upgradeButton;
     protected void Update()
     {
         transform.localScale = Vector3.one * Camera.main.orthographicSize * 0.002f;
@@ -21,6 +21,19 @@ public class UpgradeCanvas : MonoBehaviour
                 upgradeText.text = "Upgrade ( "+ (GameManager.instance.currentHit.unit.level * GameManager.instance.currentHit.unit.upgradeCostPerLevel) + "L )";
             }
         }
-
+        if (GameManager.instance.currentHit)
+        {
+            if (GameManager.instance.currentHit.filled)
+            {
+                if (GameManager.instance.currentHit.unit.level * GameManager.instance.currentHit.unit.upgradeCostPerLevel < GameManager.instance.water)
+                {
+                    upgradeButton.interactable= true;
+                }
+                else
+                {
+                    upgradeButton.interactable= false;
+                }
+            }
+        }
     }
 }
