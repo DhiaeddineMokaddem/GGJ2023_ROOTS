@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public float timePassed;
     public Tile currentHit;
     public TextMeshProUGUI resourceText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI winText;
+    public GameObject winCanvas;
+    public GameObject loseCanvas;
     private float waterResource=50f;
     public float waterAmountToWin;
     public float water
@@ -24,7 +29,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public ChoosingCanvas chooseCanvas;
-    public ChoosingCanvas upgradeCanvas;
+    public UpgradeCanvas upgradeCanvas;
     public bool isChoosing;
 
     public int attackTurrCost;
@@ -41,9 +46,15 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Start()
+    {
+        Time.timeScale= 1;
+    }
     void Update()
     {
         timePassed += Time.deltaTime;
+        float[] x = GetTimeComponents(timePassed);
+        timeText.text = x[0] + "h " + x[1] + "m " + x[2] + "s";
         if (!isChoosing)//raycast on tile to move it up
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -121,16 +132,39 @@ public class GameManager : MonoBehaviour
     }
     public void Win()
     {
+        winText.text = "in " + timeText.text + ", play again and try to beat your score";
+        winCanvas.gameObject.SetActive(true);
         Time.timeScale = 0;
-        Debug.Log("u won");
     }
     public void Lose()
     {
+        loseCanvas.gameObject.SetActive(true);
         Time.timeScale= 0;
-        Debug.Log("u lost");
     }
     public void addWater(float Amount)
     {
         water += Amount;
+    }
+    public float[] GetTimeComponents(float timeInSeconds)
+    {
+        float[] timeComponents = new float[3];
+
+        timeComponents[0] = Mathf.Floor(timeInSeconds / 3600);
+        timeComponents[1] = Mathf.Floor((timeInSeconds % 3600) / 60);
+        timeComponents[2] = Mathf.Floor(timeInSeconds % 60);
+
+        return timeComponents;
+    }
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class UpgradeCanvas : ChoosingCanvas
+using UnityEngine.UI;
+
+public class UpgradeCanvas : MonoBehaviour
 {
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI upgradeText;
-    protected new void Update()
+
+    protected void Update()
     {
-        base.Update();
-        if(GameManager.instance.isChoosing)
+        transform.localScale = Vector3.one * Camera.main.orthographicSize * 0.002f;
+        transform.forward = Camera.main.transform.forward;
+        if (GameManager.instance.isChoosing)
         {
             if (GameManager.instance.currentHit.filled)
             {
@@ -17,5 +21,6 @@ public class UpgradeCanvas : ChoosingCanvas
                 upgradeText.text = "Upgrade ( "+ (GameManager.instance.currentHit.unit.level * GameManager.instance.currentHit.unit.upgradeCostPerLevel) + "L )";
             }
         }
+
     }
 }

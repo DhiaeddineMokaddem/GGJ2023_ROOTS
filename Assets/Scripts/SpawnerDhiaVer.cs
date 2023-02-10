@@ -10,7 +10,7 @@ public class SpawnerDhiaVer : MonoBehaviour
     private float numberOfEnemies = 1;
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         while (true)
         {
             for(int i = 0; i < numberOfEnemies; i++)
@@ -26,7 +26,6 @@ public class SpawnerDhiaVer : MonoBehaviour
             {
                 numberOfEnemies+=0.25f;
             }
-            //yield return new WaitForSeconds(1/(GameManager.instance.timePassed/10));
         }
     }
     private void SpawnEnemy(Vector3 location)

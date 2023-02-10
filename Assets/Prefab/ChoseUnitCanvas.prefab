@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b724357c0f9ec46b701307c84091a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 4731534898498970840}
+  defence: {fileID: 2499859984401200602}
+  root: {fileID: 4904491835603562364}
 --- !u!1 &1227389072502439789
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +81,7 @@ RectTransform:
   m_Children:
   - {fileID: 7933780421485251005}
   m_Father: {fileID: 2303545855455431959}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -337,7 +340,7 @@ RectTransform:
   m_Children:
   - {fileID: 8399722010936650055}
   m_Father: {fileID: 2303545855455431959}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -971,8 +974,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6590286339952337734}
   - {fileID: 2914424993036947615}
+  - {fileID: 6590286339952337734}
   - {fileID: 5828182436280545679}
   - {fileID: 2966110491173079422}
   m_Father: {fileID: 6196508792891395641}
