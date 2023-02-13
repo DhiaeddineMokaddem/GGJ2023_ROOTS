@@ -6,6 +6,7 @@ public class MainTreeUnit : Unit
 {
     public static MainTreeUnit instance;
     public float waterGenerateRate;
+    public float wGRBonusPerLevel; //wGR mean waterGenerateRate
     void Update()
     {
         Generate();
@@ -13,6 +14,7 @@ public class MainTreeUnit : Unit
     public override void Upgrade()
     {
         base.Upgrade();
+        waterGenerateRate += wGRBonusPerLevel;
     }
     void Generate()
     {

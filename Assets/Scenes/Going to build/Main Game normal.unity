@@ -60446,6 +60446,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ACTUAL MAIN TREE
       objectReference: {fileID: 0}
+    - target: {fileID: 8678051580868583789, guid: 51e174d523734464687ad22fb0a0bbc7,
+        type: 3}
+      propertyPath: maxHealth
+      value: 700
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e174d523734464687ad22fb0a0bbc7, type: 3}
 --- !u!1001 &1468269969
@@ -68212,6 +68217,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -52.999996
       objectReference: {fileID: 0}
+    - target: {fileID: 4292871620005713555, guid: f55598879efb8544ba9a715db6cb77b3,
+        type: 3}
+      propertyPath: pourcentage
+      value: 0.995
+      objectReference: {fileID: 0}
     - target: {fileID: 4789671875364056285, guid: f55598879efb8544ba9a715db6cb77b3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -68231,6 +68241,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995769594314489261, guid: f55598879efb8544ba9a715db6cb77b3,
+        type: 3}
+      propertyPath: m_text
+      value: 'Normal mode
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 5071510382343953945, guid: f55598879efb8544ba9a715db6cb77b3,
         type: 3}

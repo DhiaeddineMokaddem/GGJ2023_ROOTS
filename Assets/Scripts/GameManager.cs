@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI winText;
     public GameObject winCanvas;
     public GameObject loseCanvas;
+    public GameObject pauseCanvas;
     private float waterResource=50f;
     public float waterAmountToWin;
     public float water
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
     public ChoosingCanvas chooseCanvas;
     public UpgradeCanvas upgradeCanvas;
     public bool isChoosing;
-
+    public bool paused;
+    public bool gameOver;
     public int attackTurrCost;
     public int rootTurrCost;
     public int defenceTurrCost;
@@ -52,9 +54,13 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseOrUnpause();
+        }
         timePassed += Time.deltaTime;
         float[] x = GetTimeComponents(timePassed);
-        timeText.text = x[0] + "h " + x[1] + "m " + x[2] + "s";
+        timeText.text = x[0] + "h " + x[1].ToString("00") + "m " + x[2].ToString("00") + "s";
         if (!isChoosing)//raycast on tile to move it up
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -134,11 +140,13 @@ public class GameManager : MonoBehaviour
     {
         winText.text = "in " + timeText.text + ", play again and try to beat your score";
         winCanvas.gameObject.SetActive(true);
+        gameOver = true;
         Time.timeScale = 0;
     }
     public void Lose()
     {
         loseCanvas.gameObject.SetActive(true);
+        gameOver = true;
         Time.timeScale= 0;
     }
     public void addWater(float Amount)
@@ -166,5 +174,23 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void PauseOrUnpause()
+    {
+        if (!gameOver)
+        {
+            if (paused)
+            {
+                Time.timeScale = 1f;
+                paused = false;
+                pauseCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                paused = true;
+                pauseCanvas.gameObject.SetActive(true);
+            }
+        }
     }
 }

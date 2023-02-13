@@ -5078,12 +5078,13 @@ MonoBehaviour:
   myTile: {fileID: 0}
   level: 1
   upgradeCostPerLevel: 20
-  healthBonusPerLevel: 40
+  healthBonusPerLevel: 50
   maxHealth: 700
   regenRate: 0.5
   placementCost: 0
   healthBar: {fileID: 7931947092063084665}
   waterGenerateRate: 1
+  wGRBonusPerLevel: 1
 --- !u!54 &-6786636548428978578
 Rigidbody:
   m_ObjectHideFlags: 0

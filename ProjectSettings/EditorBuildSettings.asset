@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Going to build/Training Mode.unity
     guid: 1d124b232b1e0a044b0ada3d43cb5b06
   - enabled: 1
-    path: Assets/Scenes/Going to build/Main Game.unity
+    path: Assets/Scenes/Going to build/Main Game ez.unity
+    guid: 7c9de699d2e4a284e96c92f22db0751b
+  - enabled: 1
+    path: Assets/Scenes/Going to build/Main Game normal.unity
+    guid: 538e41e8f44387f4b807cfea1180a23a
+  - enabled: 1
+    path: Assets/Scenes/Going to build/Main Game impo.unity
     guid: 857542397f3aed54886501ad686d5955
   m_configObjects: {}
