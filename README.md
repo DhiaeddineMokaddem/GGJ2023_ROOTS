@@ -41,8 +41,8 @@ Survive long enough to reach 5000 liters.
 
 Lose the root system or the main tree and the run ends.
 
-![Screenshot 3](1.png)
+![Screenshot 3](1.jpg)
 
-![Screenshot 1](Upgrade.png)
+![Screenshot 1](Upgrade.jpg)
 
-![Screenshot 2](Pause.png)
+![Screenshot 2](Pause.jpg)
